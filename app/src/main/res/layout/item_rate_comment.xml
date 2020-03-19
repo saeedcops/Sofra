@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/restaurant_reviews_adapter_cv_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/restaurant_reviews_adapter_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorText"
+                android:text="Saeed hassan"
+                android:textSize="@dimen/_16ssp"/>
+            <TextView
+                android:id="@+id/restaurant_reviews_adapter_tv_comment"
+                android:layout_below="@+id/restaurant_reviews_adapter_tv_name"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/_17ssp"
+                android:layout_toStartOf="@+id/restaurant_reviews_adapter_iv"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/colorText"
+                android:layout_height="wrap_content"
+                android:text="to test"/>
+
+            <ImageView
+                android:id="@+id/restaurant_reviews_adapter_iv"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/_20sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/good"/>
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

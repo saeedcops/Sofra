@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeActivity">
+
+        <RelativeLayout
+            android:id="@+id/home_activity_rl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/home_activity_iv_cert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_7sdp"
+                android:src="@drawable/cert" />
+
+            <ImageView
+                android:id="@+id/home_activity_iv_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/_7sdp"
+                android:src="@drawable/notification" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/home_activity_fl_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/home_activity_nav_view"
+            android:layout_below="@+id/home_activity_rl" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+
+            android:id="@+id/home_activity_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            app:itemIconSize="@dimen/_30sdp"
+            app:itemIconTint="#ffff"
+            app:menu="@menu/bottom_navigation" />
+
+    </RelativeLayout>
+</layout>

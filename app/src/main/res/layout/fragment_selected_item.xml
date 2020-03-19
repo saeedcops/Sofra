@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/selected_item_fragment_cv"
+        android:layout_margin="@dimen/_5ssp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:elevation="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp">
+
+        <ImageView
+            android:id="@+id/selected_item_fragment_iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_95sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/test"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5ssp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/rectangle_shape_bg">
+
+            <TextView
+                android:id="@+id/selected_item_fragment_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name: kentaky"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp" />
+            <TextView
+                android:id="@+id/selected_item_fragment_tv_kind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/myTextView" />
+
+
+                <TextView
+                    android:id="@+id/selected_item_fragment_tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/myTextView" />
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorText"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Specail_order"
+            style="@style/myTextView"
+            android:layout_margin="@dimen/_10sdp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:elevation="@dimen/_20sdp"
+            app:cardCornerRadius="@dimen/_20sdp">
+
+            <EditText
+                android:id="@+id/selected_item_fragment_et_special_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="-10dp"
+                style="@style/myTextView"
+                android:textColorHint="@color/colorText"
+                android:hint="@string/enter_order"/>
+
+
+        </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorText"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/count"
+                style="@style/myTextView"
+               android:layout_marginStart="-20dp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle"
+                android:padding="@dimen/_15sdp"
+                android:id="@+id/selected_item_fragment_civ_add"
+                android:src="@drawable/ic_add"/>
+
+            <TextView
+                android:id="@+id/selected_item_fragment_tv_count"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:text="1"
+                style="@style/myTextView"
+                android:gravity="center"
+                android:background="@drawable/rectangle"
+                android:elevation="@dimen/_10sdp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/selected_item_fragment_civ_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_15sdp"
+                android:background="@drawable/circle"
+                android:src="@drawable/ic_remove_black_24dp"/>
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/selected_item_fragment_civ_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_red"
+            android:elevation="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:padding="@dimen/_12sdp"
+            android:src="@drawable/ic_cert"/>
+
+
+    </LinearLayout>
+    </ScrollView>
+</layout>

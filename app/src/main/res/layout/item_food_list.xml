@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/food_list_adapter_cv"
+        android:layout_margin="@dimen/_5ssp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:elevation="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp">
+
+        <ImageView
+            android:id="@+id/food_list_adapter_iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_95sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/test"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5ssp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/rectangle_shape_bg">
+
+            <TextView
+                android:id="@+id/food_list_adapter_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name: kentaky"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp" />
+            <TextView
+                android:id="@+id/food_list_adapter_tv_kind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/myTextView" />
+            <LinearLayout
+                android:padding="@dimen/_4sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/food_list_adapter_tv_old_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:text="price: 66$"
+                    android:visibility="gone"
+                    style="@style/myTextView" />
+
+                <TextView
+                    android:id="@+id/food_list_adapter_tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/myTextView" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

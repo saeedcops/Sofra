@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/splash_activity_iv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="-50dp"
+            android:src="@drawable/salad" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/splash_activity_iv_logo"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo" />
+
+            <Button
+                android:id="@+id/splash_activity_btn_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/order_food"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rectangle_btn" />
+
+            <Button
+                android:id="@+id/splash_activity_btn_sell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sell_food"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rectangle_btn" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="-115dp"
+            android:layout_marginBottom="-140dp"
+            android:src="@drawable/salad_2" />
+
+    </RelativeLayout>
+</layout>
+

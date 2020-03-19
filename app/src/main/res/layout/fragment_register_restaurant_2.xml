@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/register_restaurant_2_fragment_rl_parent"
+        android:background="@drawable/auth_bg_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/auth_bg"/>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/register_restaurant_2_fragment_btn_register"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/myAuthTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/communication_data"
+                android:textSize="@dimen/_20ssp" />
+
+            <EditText
+                android:id="@+id/register_restaurant_2_fragment_et_phone"
+                style="@style/myAuthTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_phone_white"
+                android:hint="@string/phone"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/register_restaurant_2_fragment_et_whats"
+                style="@style/myAuthTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_whatsapp_logo_variant"
+                android:hint="@string/whatsapp"
+                android:inputType="phone" />
+
+            <TextView
+                style="@style/myAuthTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/restaurant_Photo"
+                android:textSize="@dimen/_20ssp" />
+
+            <ImageButton
+
+                android:id="@+id/register_restaurant_2_fragment_ib_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_shape_ib"
+                android:src="@drawable/ic_shop" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/register_restaurant_2_fragment_btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/rectangle_btn"
+            android:layout_centerInParent="true"
+            style="@style/myAuthTextView"
+            android:text="@string/register"
+            android:layout_margin="@dimen/_20sdp"/>
+    </RelativeLayout>
+
+</layout>

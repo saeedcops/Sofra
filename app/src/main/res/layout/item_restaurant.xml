@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/restaurant_adapter_rl_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:background="@drawable/rectangle_shape"
+            android:layout_toEndOf="@+id/restaurant_adapter_iv"
+            android:layout_marginStart="-50dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp">
+
+            <RelativeLayout
+                android:id="@+id/restaurant_adapter_ll_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_40sdp">
+
+                <TextView
+                    android:id="@+id/restaurant_adapter_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name: kentaky"
+                    android:maxLines="1"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/restaurant_adapter_tv_status"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold"
+                     />
+
+                <TextView
+                    android:id="@+id/restaurant_adapter_tv_status"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:drawableEnd="@drawable/online"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:text="open"
+                    android:textSize="@dimen/_15ssp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/restaurant_adapter_ll"
+                android:layout_below="@+id/restaurant_adapter_ll_name"
+                android:layout_marginStart="@dimen/_40ssp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/restaurant_adapter_iv_star_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_none" />
+
+                <ImageView
+                    android:id="@+id/restaurant_adapter_iv_star_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_none" />
+
+                <ImageView
+                    android:id="@+id/restaurant_adapter_iv_star_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_none" />
+
+                <ImageView
+                    android:id="@+id/restaurant_adapter_iv_star_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_none" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/restaurant_adapter_tv_mini_cost"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/restaurant_adapter_ll"
+                android:layout_height="wrap_content"
+                android:text="mini cost is 50 $"
+                android:layout_marginTop="@dimen/_5sdp"
+                style="@style/myTextView"
+                android:layout_marginStart="@dimen/_40sdp" />
+
+            <TextView
+                android:id="@+id/restaurant_adapter_tv_delivery_cost"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/restaurant_adapter_tv_mini_cost"
+                android:layout_height="wrap_content"
+                android:text="Delivery cost is 50 $"
+                android:layout_marginTop="@dimen/_5sdp"
+                style="@style/myTextView"
+                android:layout_marginStart="@dimen/_40sdp" />
+
+
+        </RelativeLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/restaurant_adapter_iv"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/kfc" />
+
+    </RelativeLayout>
+</layout>
