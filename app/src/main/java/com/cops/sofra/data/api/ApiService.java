@@ -3,10 +3,10 @@ package com.cops.sofra.data.api;
 
 import com.cops.sofra.data.model.category.Category;
 import com.cops.sofra.data.model.city.City;
+import com.cops.sofra.data.model.newPassword.ResetPassword;
 import com.cops.sofra.data.model.restaurantItems.RestaurantItems;
 import com.cops.sofra.data.model.restaurantLogin.RestaurantLogin;
 import com.cops.sofra.data.model.restaurantReviews.RestaurantReviews;
-import com.cops.sofra.data.model.region.Region;
 import com.cops.sofra.data.model.restaurants.Restaurants;
 
 import okhttp3.MultipartBody;
@@ -23,6 +23,16 @@ import retrofit2.http.Query;
 public interface ApiService {
 
     @Multipart
+    @POST("client/sign-up")
+    Call<RestaurantLogin> clientSignUp(@Part("name") RequestBody name,
+                                           @Part("email") RequestBody email,
+                                           @Part("password") RequestBody password,
+                                           @Part("password_confirmation") RequestBody passwordConfirmation,
+                                           @Part("phone") RequestBody phone,
+                                           @Part("region_id") RequestBody regionId,
+                                           @Part MultipartBody.Part profile_image);
+
+    @Multipart
     @POST("restaurant/sign-up")
     Call<RestaurantLogin> restaurantSignUp(@Part("name") RequestBody name,
                                            @Part("email") RequestBody email,
@@ -36,13 +46,35 @@ public interface ApiService {
                                            @Part MultipartBody.Part photo,
                                            @Part("delivery_time") RequestBody deliveryTime);
 
-
-
+    @POST("client/login")
+    @FormUrlEncoded
+    Call<RestaurantLogin> clientLogin(@Field("email")String email,
+                                          @Field("password")String password);
 
     @POST("restaurant/login")
     @FormUrlEncoded
     Call<RestaurantLogin> restaurantLogin(@Field("email")String email,
                                           @Field("password")String password);
+
+    @POST("client/reset-password")
+    @FormUrlEncoded
+    Call<ResetPassword> clientResetPassword(@Field("email")String email);
+
+    @POST("restaurant/reset-password")
+    @FormUrlEncoded
+    Call<ResetPassword> restaurantResetPassword(@Field("email")String email);
+
+    @POST("client/new-password")
+    @FormUrlEncoded
+    Call<ResetPassword> clientNewPassword(@Field("code")String code,
+                                          @Field("password")String password,
+                                          @Field("password_confirmation")String passwordConfirmation);
+
+    @POST("restaurant/new-password")
+    @FormUrlEncoded
+    Call<ResetPassword> restaurantNewPassword(@Field("code")String code,
+                                          @Field("password")String password,
+                                          @Field("password_confirmation")String passwordConfirmation);
 
 
     @GET("cities-not-paginated")

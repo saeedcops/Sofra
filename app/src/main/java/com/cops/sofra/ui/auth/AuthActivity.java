@@ -20,7 +20,13 @@ public class AuthActivity extends BaseActivity {
 
         binding= DataBindingUtil.setContentView(this, R.layout.activity_auth);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, new UserLoginFragment()).commit();
+        String sessionId = getIntent().getStringExtra("userType");
+
+        Bundle bundle=new Bundle();
+        bundle.putString("userType",sessionId);
+        UserLoginFragment userLoginFragment=new UserLoginFragment();
+        userLoginFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, userLoginFragment).commit();
 
 
     }

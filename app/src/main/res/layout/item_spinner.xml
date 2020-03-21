@@ -7,7 +7,7 @@
         android:id="@+id/item_spinner_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="choose city"
+        android:textColor="@color/colorWhite"
         android:gravity="center"
         android:textSize="@dimen/_15sdp"/>
 

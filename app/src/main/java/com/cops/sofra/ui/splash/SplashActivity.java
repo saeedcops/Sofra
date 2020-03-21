@@ -41,6 +41,7 @@ public class SplashActivity extends BaseActivity {
             } else if (LoadData(this, "userType").equals("seller")) {
 
                 Intent intent = new Intent(this, AuthActivity.class);
+
                 startActivity(intent);
             }
 
@@ -59,7 +60,7 @@ public class SplashActivity extends BaseActivity {
                 public void onClick(View v) {
 
                     Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
-                    //intent.putExtra("user","restaurant");
+                    intent.putExtra("userType","seller");
                     startActivity(intent);
 
                 }

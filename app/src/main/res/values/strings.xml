@@ -34,7 +34,16 @@
     <string name="whatsapp">Whats app</string>
     <string name="restaurant_Photo">Restaurant Photo</string>
     <string name="register">Register</string>
-    <string name="select_image">Select Restaurant Image</string>
+    <string name="select_image">Please Select Image</string>
     <string name="choose_regoin">Choose Region</string>
     <string name="canceled">Canceled</string>
+    <string name="name">Name</string>
+    <string name="select_your_location">Please Select your Location</string>
+    <string name="select_profile_image">Select Profile Image</string>
+    <string name="select_restaurant_image">Select Restaurant Logo</string>
+    <string name="enter_your_email">Please Enter your Email</string>
+    <string name="send">Send</string>
+    <string name="enter_your_code">Please Enter the Code</string>
+    <string name="code">Code</string>
+    <string name="enter_your_password">Please Enter your new Password</string>
 </resources>

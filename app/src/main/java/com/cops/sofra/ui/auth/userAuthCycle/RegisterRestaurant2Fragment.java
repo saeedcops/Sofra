@@ -47,6 +47,7 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
     private String imagePath;
     private AlbumFile albumFile;
     private RestaurantSignUpViewModel signUpViewModel;
+    private String mName,mEmail,mDeliveryTime,mPassword,mPasswordConfirm,mMinimumCharger,mDeliveryCost,mRegionId;
 
 
 
@@ -63,6 +64,16 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
         final View view = binding.getRoot();
         setUpActivity();
 
+        if (getArguments()!=null) {
+            mName=getArguments().getString("name");
+            mEmail=getArguments().getString("email");
+            mDeliveryTime=getArguments().getString("deliveryTime");
+            mPassword=getArguments().getString("password");
+            mPasswordConfirm=getArguments().getString("passwordConfirm");
+            mMinimumCharger=getArguments().getString("minimumCharger");
+            mDeliveryCost=getArguments().getString("deliveryCost");
+            mRegionId=getArguments().getString("regionId");
+        }
 
             binding.registerRestaurant2FragmentIbPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,19 +107,20 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
     private void signUp() {
         signUpViewModel= ViewModelProviders.of(getActivity()).get(RestaurantSignUpViewModel.class);
 
+        RequestBody name= convertToRequestBody(mName);
+        RequestBody email= convertToRequestBody(mEmail);
+        RequestBody deliveryTime= convertToRequestBody(mDeliveryTime);
+        RequestBody regionId= convertToRequestBody(mRegionId);
+        RequestBody password= convertToRequestBody(mPassword);
+        RequestBody passwordConfirm= convertToRequestBody(mPasswordConfirm);
+        RequestBody deliveryCost= convertToRequestBody(mDeliveryCost);
+        RequestBody minimumCharge= convertToRequestBody(mMinimumCharger);
 
-        RequestBody name= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtName.getText().toString());
-        RequestBody email= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtEmail.getText().toString());
-        RequestBody deliveryTime= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtDeliveryTime.getText().toString());
-        RequestBody regionId= convertToRequestBody(String.valueOf(RegisterRestaurantFragment.regionId));
-        RequestBody password= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtPassword.getText().toString());
-        RequestBody passwordConfirm= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtPasswordConfirm.getText().toString());
-        RequestBody deliveryCost= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtDeliveryCost.getText().toString());
-        RequestBody minimumCharge= convertToRequestBody(RegisterRestaurantFragment.binding.registerRestaurantFragmentEtMinimumCharger.getText().toString());
         RequestBody phone= convertToRequestBody(binding.registerRestaurant2FragmentEtPhone.getText().toString());
         RequestBody whatsApp= convertToRequestBody(binding.registerRestaurant2FragmentEtWhats.getText().toString());
         MultipartBody.Part image=convertFileToMultipart(imagePath,albumFile.getBucketName());
         Log.i("image",image.toString());
+
         signUpViewModel.getRestaurant(name,email,password,passwordConfirm,phone,whatsApp,regionId,deliveryCost,minimumCharge,image,deliveryTime);
         Log.i("methodCalled","ok");
         signUpViewModel.restaurantSignUpMutableLiveData.observe(this, new Observer<RestaurantLogin>() {
@@ -118,8 +130,8 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
                     Log.i("yes",restaurantLogin.getMsg());
                     Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_LONG).show();
                     SaveData(getActivity(), "userType", "seller");
-                    SaveData(getActivity(), "email", RegisterRestaurantFragment.binding.registerRestaurantFragmentEtEmail.getText().toString());
-                    SaveData(getActivity(), "password", RegisterRestaurantFragment.binding.registerRestaurantFragmentEtPassword.getText().toString());
+                    SaveData(getActivity(), "email", mEmail);
+                    SaveData(getActivity(), "password", mPassword);
                     SaveData(getActivity(), "apiToken", restaurantLogin.getData().getApiToken());
                     Intent intent=new Intent(getActivity(), HomeActivity.class);
                     startActivity(intent);
@@ -134,10 +146,10 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
 
     private void selectImage() {
 
-        Album.initialize(AlbumConfig.newBuilder(getActivity())
-                .setAlbumLoader(new MediaLoader())
-                .setLocale(Locale.getDefault())
-                .build());
+//        Album.initialize(AlbumConfig.newBuilder(getActivity())
+//                .setAlbumLoader(new MediaLoader())
+//                .setLocale(Locale.getDefault())
+//                .build());
 
 
         Album.image(this)
@@ -146,7 +158,7 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
                 .columnCount(2)
                 .widget(
                         Widget.newDarkBuilder(getActivity())
-                                .title(getString(R.string.select_image))
+                                .title(getString(R.string.select_restaurant_image))
                                 .build()
                 )
 

@@ -1,12 +1,11 @@
 package com.cops.sofra.ui.auth.userAuthCycle;
 
-import android.os.Build;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
@@ -20,14 +19,10 @@ import com.cops.sofra.R;
 import com.cops.sofra.adapters.CitySpinnerAdapter;
 import com.cops.sofra.data.model.city.City;
 import com.cops.sofra.data.model.city.CityData;
-import com.cops.sofra.data.model.region.Region;
-import com.cops.sofra.data.model.restaurantLogin.RestaurantLogin;
 import com.cops.sofra.databinding.FragmentRegisterRestaurantBinding;
-import com.cops.sofra.databinding.FragmentUserLoginBinding;
 import com.cops.sofra.ui.BaseFragment;
 import com.cops.sofra.viewModel.CityViewModel;
 import com.cops.sofra.viewModel.RegionViewModel;
-import com.cops.sofra.viewModel.RestaurantLoginViewModel;
 
 import java.util.ArrayList;
 
@@ -39,11 +34,11 @@ import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 public class RegisterRestaurantFragment extends BaseFragment {
 
 
-    public static FragmentRegisterRestaurantBinding binding;
+    private FragmentRegisterRestaurantBinding binding;
     private ArrayList<CityData> cityList=new ArrayList<>();
     private ArrayList<CityData> regionList=new ArrayList<>();
     private int cityId=0;
-    public static int regionId=0;
+    private int regionId=0;
 
 
 
@@ -58,7 +53,6 @@ public class RegisterRestaurantFragment extends BaseFragment {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_register_restaurant,container,false);
         final View view = binding.getRoot();
         setUpActivity();
-
         getCity();
 
 
@@ -74,7 +68,20 @@ public class RegisterRestaurantFragment extends BaseFragment {
                         &&isPasswordMatched(binding.registerRestaurantFragmentEtPassword,binding.registerRestaurantFragmentEtPasswordConfirm)) {
                     if (cityId > 0 && regionId > 0) {
 
-                        getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, new RegisterRestaurant2Fragment())
+                        Bundle bundle =new Bundle();
+                        bundle.putString("name",binding.registerRestaurantFragmentEtName.getText().toString());
+                        bundle.putString("email",binding.registerRestaurantFragmentEtEmail.getText().toString());
+                        bundle.putString("deliveryTime",binding.registerRestaurantFragmentEtDeliveryTime.getText().toString());
+                        bundle.putString("password",binding.registerRestaurantFragmentEtPassword.getText().toString());
+                        bundle.putString("passwordConfirm",binding.registerRestaurantFragmentEtPasswordConfirm.getText().toString());
+                        bundle.putString("minimumCharger",binding.registerRestaurantFragmentEtMinimumCharger.getText().toString());
+                        bundle.putString("deliveryCost",binding.registerRestaurantFragmentEtDeliveryCost.getText().toString());
+                        bundle.putString("regionId",String.valueOf(regionId));
+
+                        RegisterRestaurant2Fragment registerRestaurant2Fragment=new RegisterRestaurant2Fragment();
+                        registerRestaurant2Fragment.setArguments(bundle);
+
+                        getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, registerRestaurant2Fragment)
                                 .addToBackStack(null).commit();
                     }else {
                         Toast.makeText(baseActivity, "Please Select Restaurant Location", Toast.LENGTH_SHORT).show();
@@ -150,6 +157,7 @@ public class RegisterRestaurantFragment extends BaseFragment {
                 spinnerAdapter.setData(regionList, getString(R.string.choose_regoin));
                 binding.registerRestaurantFragmentSpRegion.setAdapter(spinnerAdapter);
                 binding.registerRestaurantFragmentSpRegion.setEnabled(true);
+
                 binding.registerRestaurantFragmentSpRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

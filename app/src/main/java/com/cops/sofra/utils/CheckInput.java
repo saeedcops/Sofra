@@ -2,10 +2,6 @@ package com.cops.sofra.utils;
 
 import android.widget.EditText;
 
-import com.cops.sofra.R;
-import com.cops.sofra.ui.auth.AuthActivity;
-import com.google.android.material.textfield.TextInputLayout;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +19,7 @@ public class CheckInput {
             return true;
 
         } else {
+
             email.setError("Please Enter a Valid Email Address");
             email.requestFocus();
             return false;
@@ -69,6 +66,34 @@ public class CheckInput {
             return false;
         }else {
 
+            return true;
+        }
+    }
+
+    public static boolean isEditTextSet(EditText editText, EditText editText2,
+                                        EditText editText3,EditText editText4,
+                                        EditText editText5){
+        if(editText.getText().toString().equals("")) {
+            editText.setError("This Field is Required");
+            editText.requestFocus();
+            return false;
+        }else if(editText2.getText().toString().equals("")) {
+            editText2.setError("This Field is Required");
+            editText2.requestFocus();
+            return false;
+        }else if(editText3.getText().toString().equals("")){
+            editText3.setError("This Field is Required");
+            editText3.requestFocus();
+            return false;
+        }else if(editText4.getText().toString().equals("")){
+            editText4.setError("This Field is Required");
+            editText4.requestFocus();
+            return false;
+        }else if(editText5.getText().toString().equals("")) {
+            editText5.setError("This Field is Required");
+            editText5.requestFocus();
+            return false;
+        }else {
             return true;
         }
     }
