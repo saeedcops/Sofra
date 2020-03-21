@@ -22,10 +22,9 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding= DataBindingUtil.setContentView(this,R.layout.activity_home);
 
-       binding.homeActivityNavView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        binding.homeActivityNavView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
       getSupportFragmentManager().beginTransaction().replace(R.id.home_activity_fl_frame, new HomeFragment()).commit();
 
