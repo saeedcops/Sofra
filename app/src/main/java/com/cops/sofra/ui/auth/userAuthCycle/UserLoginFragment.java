@@ -1,6 +1,8 @@
 package com.cops.sofra.ui.auth.userAuthCycle;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +18,13 @@ import com.cops.sofra.R;
 import com.cops.sofra.data.model.restaurantLogin.RestaurantLogin;
 import com.cops.sofra.databinding.FragmentUserLoginBinding;
 import com.cops.sofra.ui.BaseFragment;
+import com.cops.sofra.ui.home.HomeActivity;
+import com.cops.sofra.ui.home.homeCycle.CompleteOrderFragment;
+import com.cops.sofra.utils.CheckInput;
 import com.cops.sofra.viewModel.ClientLoginViewModel;
 import com.cops.sofra.viewModel.RestaurantLoginViewModel;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-import static com.cops.sofra.data.local.SharedPreferencesManger.SaveData;
+import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.SaveData;
 import static com.cops.sofra.utils.CheckInput.isEditTextSet;
 import static com.cops.sofra.utils.CheckInput.isEmailValid;
 import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
@@ -37,6 +40,7 @@ public class UserLoginFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new CheckInput(getActivity());
     }
 
     @Nullable
@@ -124,10 +128,16 @@ public class UserLoginFragment extends BaseFragment {
                 public void onChanged(RestaurantLogin restaurantLogin) {
                     if (restaurantLogin.getStatus()==1) {
                         SaveData(getActivity(), "userType", "client");
+                        SaveData(getActivity(), "userId", restaurantLogin.getData().getUser().getId());
                         SaveData(getActivity(), "apiToken", restaurantLogin.getData().getApiToken());
+                        SaveData(getActivity(), "phone", restaurantLogin.getData().getUser().getPhone());
+                        SaveData(getActivity(), "name", restaurantLogin.getData().getUser().getName());
                         SaveData(getActivity(), "email", binding.userLoginFragmentEtUserName.getText().toString());
                         SaveData(getActivity(), "password", binding.userLoginFragmentEtPassword.getText().toString());
+                        SaveData(getActivity(), "address",restaurantLogin.getData().getUser().getRegion().getName());
 
+                        Log.i("address",restaurantLogin.getData().getUser().getRegion().getName());
+                        onBack();
                     }else {
                         Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_SHORT).show();
                     }
@@ -152,9 +162,12 @@ public class UserLoginFragment extends BaseFragment {
                     if (restaurantLogin.getStatus()==1) {
                         SaveData(getActivity(), "userType", "seller");
                         SaveData(getActivity(), "apiToken", restaurantLogin.getData().getApiToken());
+                        SaveData(getActivity(), "restaurantId", restaurantLogin.getData().getUser().getId());
                         SaveData(getActivity(), "email", binding.userLoginFragmentEtUserName.getText().toString());
                         SaveData(getActivity(), "password", binding.userLoginFragmentEtPassword.getText().toString());
-
+                        Log.i("apiToken",restaurantLogin.getData().getApiToken());
+                        Intent intent=new Intent(getActivity(), HomeActivity.class);
+                        startActivity(intent);
                     }else {
                         Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_SHORT).show();
                     }

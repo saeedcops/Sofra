@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/client_offer_adapter_rl_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:background="@drawable/rectangle_text_6"
+            android:layout_toEndOf="@+id/client_adapter_iv"
+            android:layout_marginStart="-50dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp">
+
+            <TextView
+                android:id="@+id/client_offer_adapter_tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/myTextView"
+                android:gravity="center"
+                android:layout_above="@+id/client_offer_adapter_btn"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_centerVertical="true"/>
+
+            <Button
+                android:id="@+id/client_offer_adapter_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/rectangle_btn"
+                android:text="@string/details"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"/>
+
+        </RelativeLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/client_adapter_iv"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/kfc" />
+
+    </RelativeLayout>
+</layout>

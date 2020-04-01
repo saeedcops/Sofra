@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/rectangle_text_4">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/complete_order_action_fragment_iv"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:src="@drawable/kfc" />
+
+                <TextView
+                    android:id="@+id/complete_order_action_fragment_tv_name"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/complete_order_action_fragment_iv"
+                    android:text="@string/order_now"
+                    android:textColor="@color/albumColorPrimaryBlack" />
+
+                <TextView
+                    android:id="@+id/complete_order_action_fragment_tv_date"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/complete_order_action_fragment_tv_name"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toEndOf="@+id/complete_order_action_fragment_iv"
+                    android:text="@string/order_now"
+                    android:textColor="@color/albumColorPrimaryBlack" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/complete_order_action_fragment_tv_address"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/rectangle_text_5"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/order_now"
+                android:textColor="@color/albumColorPrimaryBlack" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_details"
+                    android:textColor="@color/albumColorPrimaryBlack" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/complete_order_action_fragment_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+
+                <TextView
+                    android:id="@+id/complete_order_action_fragment_tv_order_price"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_details"
+                    android:textColor="@color/albumColorPrimaryBlack"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:id="@+id/complete_order_action_fragment_tv_order_delivery_cost"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_now"
+                    android:textColor="@color/albumColorPrimaryBlack"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:id="@+id/complete_order_action_fragment_tv_order_total"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_now"
+                    android:textColor="@color/albumColorPrimaryBlack"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:id="@+id/complete_order_action_fragment_tv_order_pay"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_now"
+                    android:textColor="@color/albumColorPrimaryBlack"
+                    android:textSize="@dimen/_14ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/complete_order_action_fragment_btn_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_shape_1"
+                    android:drawableEnd="@drawable/phone"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/call"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+
+                <Button
+                    android:id="@+id/complete_order_action_fragment_btn_accept"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_shape_2"
+                    android:drawableEnd="@drawable/like"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/accept"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+
+                <Button
+                    android:id="@+id/complete_order_action_fragment_btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_shape_2"
+                    android:backgroundTint="@color/albumColorPrimaryBlack"
+                    android:drawableEnd="@drawable/close"
+                    android:drawableTint="@color/colorWhite"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -3,8 +3,6 @@ package com.cops.sofra.viewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.cops.sofra.data.model.restaurantItems.RestaurantItems;
-import com.cops.sofra.data.model.restaurantItems.RestaurantItemsData;
 import com.cops.sofra.data.model.restaurantReviews.RestaurantReviews;
 import com.cops.sofra.data.model.restaurantReviews.RestaurantReviewsData;
 
@@ -18,20 +16,20 @@ import static com.cops.sofra.data.api.RetroritClient.getClient;
 
 public class RestaurantReviewsViewModel extends ViewModel {
 
-    public MutableLiveData<List<RestaurantReviewsData>> restaurantsReviewsMutableLiveData=new MutableLiveData<>();
+    public MutableLiveData<RestaurantReviews> restaurantsReviewsMutableLiveData=new MutableLiveData<>();
 
 
 
-    public void getRestaurantReviews(String apiToken,int restaurant_id){
+    public void getRestaurantReviews(String apiToken,int page,int restaurant_id){
 
-        getClient().getRestaurantsReviews(apiToken,restaurant_id).enqueue(new Callback<RestaurantReviews>() {
+        getClient().getRestaurantsReviews(apiToken,page,restaurant_id).enqueue(new Callback<RestaurantReviews>() {
             @Override
             public void onResponse(Call<RestaurantReviews> call, Response<RestaurantReviews> response) {
                 try {
 
                     if (response.body().getStatus()==1) {
 
-                        restaurantsReviewsMutableLiveData.setValue(response.body().getData().getData());
+                        restaurantsReviewsMutableLiveData.setValue(response.body());
                     }
 
                 }catch (Exception e){

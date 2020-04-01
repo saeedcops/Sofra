@@ -3,7 +3,7 @@ package com.cops.sofra.data.model.restaurantLogin;
 
 import java.util.List;
 
-import com.cops.sofra.data.model.category.CategoryData;
+import com.cops.sofra.data.model.region.RegionData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -53,16 +53,16 @@ public class User {
     private String activated;
     @SerializedName("rate")
     @Expose
-    private Integer rate;
+    private Double rate;
     @SerializedName("photo_url")
     @Expose
     private String photoUrl;
     @SerializedName("region")
     @Expose
-    private Region region;
+    private RegionData region;
     @SerializedName("categories")
     @Expose
-    private List<CategoryData> categories = null;
+    private List<Object> categories = null;
 
     public Integer getId() {
         return id;
@@ -176,11 +176,11 @@ public class User {
         this.activated = activated;
     }
 
-    public Integer getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public void setRate(Integer rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
     }
 
@@ -192,19 +192,19 @@ public class User {
         this.photoUrl = photoUrl;
     }
 
-    public Region getRegion() {
+    public RegionData getRegion() {
         return region;
     }
 
-    public void setRegion(Region region) {
+    public void setRegion(RegionData region) {
         this.region = region;
     }
 
-    public List<CategoryData> getCategories() {
+    public List<Object> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<CategoryData> categories) {
+    public void setCategories(List<Object> categories) {
         this.categories = categories;
     }
 

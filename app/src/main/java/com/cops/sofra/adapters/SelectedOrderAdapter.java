@@ -3,29 +3,40 @@ package com.cops.sofra.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cops.sofra.R;
+import com.cops.sofra.data.local.room.RoomDao;
+import com.cops.sofra.data.model.OrderItem;
 import com.cops.sofra.data.model.category.CategoryData;
 import com.cops.sofra.databinding.ItemFoodCategoryBinding;
 import com.cops.sofra.databinding.ItemSelectedOrderBinding;
+import com.cops.sofra.ui.BaseActivity;
+import com.cops.sofra.ui.home.homeCycle.CartFragment;
+import com.cops.sofra.ui.home.homeCycle.ReviewItemFoodFragment;
 import com.cops.sofra.utils.SelectedOrder;
+import com.cops.sofra.viewModel.room.ItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+
+import static com.cops.sofra.data.local.room.RoomManager.getInstance;
 
 public class SelectedOrderAdapter extends RecyclerView.Adapter<SelectedOrderAdapter.ViewHolder> {
 
     private Context context;
     private Activity activity;
-    private List<SelectedOrder> selectedOrders = new ArrayList<>();
+    private List<OrderItem> selectedOrders = new ArrayList<>();
 
-    public SelectedOrderAdapter(Activity activity, List<SelectedOrder> selectedOrders) {
+    public SelectedOrderAdapter(Activity activity, List<OrderItem> selectedOrders) {
         this.context = activity;
         this.activity=activity;
         this.selectedOrders = selectedOrders;
@@ -56,21 +67,25 @@ public class SelectedOrderAdapter extends RecyclerView.Adapter<SelectedOrderAdap
         holder.binding.selectedOrderAdapterPrice.setText(selectedOrders.get(position).getPrice());
         holder.binding.selectedOrderAdapterTvCount.setText(selectedOrders.get(position).getCount()+"");
 
+
     }
 
 //
 
     private void setAction(final SelectedOrderAdapter.ViewHolder holder, final int position) {
-//        holder.binding.restaurantAdapterRlParent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ((HomeActivity) activity).getSupportFragmentManager().beginTransaction()
-//                        .addToBackStack(null)
-//                        .replace(R.id.home_activity_fl_frame, new RestaurantItemsFragment())
-//                        .commit();
-//            }
-//        });
+        holder.binding.selectedOrderAdapterCivRemoveAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ItemViewModel itemViewModel= ViewModelProviders.of((BaseActivity)activity).get(ItemViewModel.class);
+                itemViewModel.onDelete(selectedOrders.get(position));
+
+                CartFragment.total-=Double.parseDouble(selectedOrders.get(position).getPrice());
+                selectedOrders.remove(position);
+                notifyDataSetChanged();
+
+            }
+        });
 
     }
 

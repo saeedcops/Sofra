@@ -13,8 +13,8 @@ import com.cops.sofra.R;
 import com.cops.sofra.ui.auth.AuthActivity;
 import com.cops.sofra.ui.home.HomeActivity;
 
-import static com.cops.sofra.data.local.SharedPreferencesManger.LoadData;
-import static com.cops.sofra.data.local.SharedPreferencesManger.SaveData;
+import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.LoadData;
+import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.SaveData;
 
 public class SplashActivity extends BaseActivity {
 
@@ -32,18 +32,9 @@ public class SplashActivity extends BaseActivity {
 
         if (LoadData(this,"userType")!=null) {
 
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
 
-            if (LoadData(this, "userType").equals("client")) {
-
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-
-            } else if (LoadData(this, "userType").equals("seller")) {
-
-                Intent intent = new Intent(this, AuthActivity.class);
-
-                startActivity(intent);
-            }
 
         }else {
 
@@ -68,5 +59,11 @@ public class SplashActivity extends BaseActivity {
             });
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
+        System.exit(0);
     }
 }

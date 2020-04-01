@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="@string/Contact_us"
+            android:textSize="@dimen/_20sdp" />
+
+        <EditText
+            android:id="@+id/contact_us_fragment_et_name"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:hint="@string/name"
+            android:padding="@dimen/_10sdp"
+            android:background="@drawable/rectangle_text_4"
+            />
+        <EditText
+            android:id="@+id/contact_us_fragment_et_email"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:hint="@string/email"
+            android:padding="@dimen/_10sdp"
+            android:background="@drawable/rectangle_text_4"
+             />
+        <EditText
+            android:id="@+id/contact_us_fragment_et_phone"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:padding="@dimen/_10sdp"
+            android:background="@drawable/rectangle_text_4"
+             />
+        <EditText
+            android:id="@+id/contact_us_fragment_et_message"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:hint="@string/message"
+            android:maxLines="3"
+            android:lines="3"
+            android:padding="@dimen/_10sdp"
+            android:background="@drawable/rectangle_text_4"
+             />
+
+            <RadioGroup
+                android:id="@+id/contact_us_fragment_radio_group"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/contact_us_fragment_rb_complaint"
+                    android:checked="true"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/complaint"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/contact_us_fragment_rb_suggestion"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/suggestion"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/contact_us_fragment_rb_inquiry"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/inquiry"
+                    android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+
+
+        <Button
+            android:id="@+id/contact_us_fragment_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:background="@drawable/rectangle_btn"
+            android:text="@string/send"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_20ssp" />
+    </LinearLayout>
+</ScrollView>
+</layout>

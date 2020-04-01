@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.chauthai.swipereveallayout.SwipeRevealLayout
+
+        android:id="@+id/restaurant_item_food_list_adapter_swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:elevation="@dimen/_4sdp"
+        app:dragEdge="left"
+        app:mode="same_level">
+
+        <LinearLayout
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_margin="@dimen/_7sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/restaurant_item_food_list_adapter_iv_delete"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:src="@drawable/ic_delete_red"
+                android:textAlignment="textEnd"
+                app:civ_circle_background_color="@color/colorPrimary" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/restaurant_item_food_list_adapter_iv_edit"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/restaurant_item_food_list_adapter_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="@dimen/_20sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/restaurant_item_food_list_adapter_iv_item"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:background="@drawable/rectangle"
+                    android:gravity="center"
+                    android:src="@drawable/salad" />
+
+                <TextView
+                    android:id="@+id/restaurant_item_food_list_adapter_tv_name"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toEndOf="@+id/restaurant_item_food_list_adapter_iv_item"
+                     />
+                <TextView
+                    android:id="@+id/restaurant_item_food_list_adapter_tv_details"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/restaurant_item_food_list_adapter_ll"
+                    android:layout_toEndOf="@+id/restaurant_item_food_list_adapter_iv_item"
+                    />
+
+                <LinearLayout
+                    android:layout_margin="@dimen/_10sdp"
+                    android:id="@+id/restaurant_item_food_list_adapter_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+                <TextView
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:text="@string/price" />
+                <TextView
+                    android:id="@+id/restaurant_item_food_list_adapter_tv_cost"
+                    style="@style/myTextView"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </com.chauthai.swipereveallayout.SwipeRevealLayout>
+</layout>

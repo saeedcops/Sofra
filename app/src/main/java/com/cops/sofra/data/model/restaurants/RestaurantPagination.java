@@ -2,6 +2,8 @@
 package com.cops.sofra.data.model.restaurants;
 
 import java.util.List;
+
+import com.cops.sofra.data.model.restaurantLogin.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +14,7 @@ public class RestaurantPagination {
     private Integer currentPage;
     @SerializedName("data")
     @Expose
-    private List<RestaurantData> data = null;
+    private List<User> data = null;
     @SerializedName("first_page_url")
     @Expose
     private String firstPageUrl;
@@ -52,11 +54,11 @@ public class RestaurantPagination {
         this.currentPage = currentPage;
     }
 
-    public List<RestaurantData> getData() {
+    public List<User> getData() {
         return data;
     }
 
-    public void setData(List<RestaurantData> data) {
+    public void setData(List<User> data) {
         this.data = data;
     }
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/restaurant_edit_profile_2_fragment_ll_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/restaurant_edit_profile_2_fragment_et_delivery_cost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_text_4"
+            android:layout_margin="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_money_white"
+            android:inputType="phone"
+            android:drawableTint="@color/colorText"
+            android:drawablePadding="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:hint="@string/delivery_cost"/>
+        <EditText
+            android:id="@+id/restaurant_edit_profile_2_fragment_et_delivery_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_text_4"
+            android:layout_margin="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_time_white"
+            android:inputType="phone"
+            android:drawableTint="@color/colorText"
+            android:drawablePadding="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:hint="@string/delivery_time"/>
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/myTextView"
+                android:text="@string/status"/>
+
+            <Switch
+                android:id="@+id/restaurant_edit_profile_2_fragment_sw"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/myTextView"
+            android:text="@string/communication_data"/>
+
+        <EditText
+            android:id="@+id/restaurant_edit_profile_2_fragment_et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_text_4"
+            android:layout_margin="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_phone_white"
+            android:inputType="phone"
+            android:drawableTint="@color/colorText"
+            android:drawablePadding="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:hint="@string/phone"/>
+        <EditText
+            android:id="@+id/restaurant_edit_profile_2_fragment_et_whatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_text_4"
+            android:layout_margin="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_whatsapp_logo_variant"
+            android:inputType="phone"
+            android:drawableTint="@color/colorText"
+            android:drawablePadding="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:hint="@string/whatsapp"/>
+        <Button
+            android:id="@+id/restaurant_edit_profile_fragment_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_btn"
+            android:layout_gravity="center"
+            android:text="@string/edit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="@dimen/_10sdp"/>
+
+    </LinearLayout>
+</ScrollView>
+</layout>

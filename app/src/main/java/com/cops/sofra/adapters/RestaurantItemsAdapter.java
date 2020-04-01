@@ -14,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cops.sofra.R;
-import com.cops.sofra.data.model.restaurantItems.RestaurantItemsData;
+import com.cops.sofra.data.model.myOrder.Item;
 import com.cops.sofra.databinding.ItemFoodListBinding;
 import com.cops.sofra.ui.home.HomeActivity;
-import com.cops.sofra.ui.home.homeCycle.RestaurantItemsFragment;
-import com.cops.sofra.ui.home.homeCycle.SelectedItemFragment;
+import com.cops.sofra.ui.home.homeCycle.ReviewItemFoodFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +26,9 @@ public class RestaurantItemsAdapter extends RecyclerView.Adapter<RestaurantItems
 
     private Context context;
     private Activity activity;
-    private List<RestaurantItemsData> restaurantItemsData = new ArrayList<>();
+    private List<Item> restaurantItemsData = new ArrayList<>();
 
-    public RestaurantItemsAdapter(Activity activity, List<RestaurantItemsData> restaurantDataList) {
+    public RestaurantItemsAdapter(Activity activity, List<Item> restaurantDataList) {
         this.context = activity;
         this.activity=activity;
         this.restaurantItemsData = restaurantDataList;
@@ -84,12 +83,14 @@ public class RestaurantItemsAdapter extends RecyclerView.Adapter<RestaurantItems
                 bundle.putString("imageUrl",restaurantItemsData.get(position).getPhotoUrl());
                 bundle.putString("name",restaurantItemsData.get(position).getName());
                 bundle.putString("description",restaurantItemsData.get(position).getDescription());
+                bundle.putInt("itemId",restaurantItemsData.get(position).getId());
+
                 if (restaurantItemsData.get(position).getHasOffer()) {
                     bundle.putString("price", restaurantItemsData.get(position).getOfferPrice());
                 }else {
                     bundle.putString("price", restaurantItemsData.get(position).getPrice());
                 }
-                SelectedItemFragment SIF=new SelectedItemFragment();
+                ReviewItemFoodFragment SIF=new ReviewItemFoodFragment();
                 SIF.setArguments(bundle);
 
                 ((HomeActivity) activity).getSupportFragmentManager().beginTransaction()

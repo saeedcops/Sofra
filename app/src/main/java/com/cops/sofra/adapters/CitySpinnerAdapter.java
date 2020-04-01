@@ -16,8 +16,8 @@ public class CitySpinnerAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater inflater;
-    public Integer selectedId = 0;
-    public List<CityData> generalResponceData = new ArrayList();
+    private Integer selectedId = 0;
+    private List<CityData> generalResponceData = new ArrayList();
 
     public CitySpinnerAdapter(Context context) {
         this.context = context;

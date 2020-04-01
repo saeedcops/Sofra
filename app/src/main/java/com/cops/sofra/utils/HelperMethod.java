@@ -9,24 +9,53 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.text.Html;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
+import com.cops.sofra.R;
+import com.cops.sofra.adapters.CitySpinnerAdapter;
+import com.cops.sofra.data.model.city.City;
+import com.cops.sofra.data.model.city.CityData;
+import com.cops.sofra.ui.BaseActivity;
+import com.cops.sofra.viewModel.CityViewModel;
 import com.google.android.material.textfield.TextInputLayout;
+import com.yanzhenjie.album.Action;
+import com.yanzhenjie.album.Album;
+import com.yanzhenjie.album.AlbumConfig;
+import com.yanzhenjie.album.AlbumFile;
+import com.yanzhenjie.album.api.widget.Widget;
 
+
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Locale;
+import java.util.TimeZone;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class HelperMethod {
     private static ProgressDialog checkDialog;
@@ -39,22 +68,51 @@ public class HelperMethod {
         transaction.commit();
     }
 
-//    public static void showCalender(Context context, String title, final TextInputLayout text_view_data, final DateTxt data1) {
-//        DatePickerDialog mDatePicker = new DatePickerDialog(context, AlertDialog.BUTTON_NEGATIVE, new DatePickerDialog.OnDateSetListener() {
-//            public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
-//                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
-//                DecimalFormat mFormat = new DecimalFormat("00", symbols);
-//                String data = selectedYear + "-" + mFormat.format(Double.valueOf((selectedMonth + 1))) + "-" + mFormat.format(Double.valueOf(selectedDay));
-//                data1.setDate_txt(data);
-//                data1.setDay(mFormat.format(Double.valueOf(selectedDay)));
-//                data1.setMonth(mFormat.format(Double.valueOf(selectedMonth + 1)));
-//                data1.setYear(String.valueOf(selectedYear));
-//                text_view_data.getEditText().setText(data);
-//            }
-//        }, Integer.parseInt(data1.getYear()), Integer.parseInt(data1.getMonth()) - 1, Integer.parseInt(data1.getDay()));
-//        mDatePicker.setTitle(title);
-//        mDatePicker.show();
-//    }
+    public static MultipartBody.Part convertFileToMultipart(String pathImageFile, String Key) {
+        if (pathImageFile != null) {
+            File file = new File(pathImageFile);
+            RequestBody reqFileselect = RequestBody.create(MediaType.parse("image/*"), file);
+            MultipartBody.Part Imagebody = MultipartBody.Part.createFormData(Key, file.getName(), reqFileselect);
+            return Imagebody;
+        } else {
+            return null;
+        }
+    }
+
+    //convert from string to RequestBody:
+    public static RequestBody convertToRequestBody(String part) {
+        try {
+            if (!part.equals("")) {
+                RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), part);
+                return requestBody;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
+//
+
+
+    public static void showCalender(Context context, String title, final TextInputLayout text_view_data, final DateTxt data1) {
+        DatePickerDialog mDatePicker = new DatePickerDialog(context, AlertDialog.BUTTON_NEGATIVE, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
+                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+                DecimalFormat mFormat = new DecimalFormat("00", symbols);
+                String data = selectedYear + "-" + mFormat.format(Double.valueOf((selectedMonth + 1))) + "-" + mFormat.format(Double.valueOf(selectedDay));
+                data1.setDate_txt(data);
+                data1.setDay(mFormat.format(Double.valueOf(selectedDay)));
+                data1.setMonth(mFormat.format(Double.valueOf(selectedMonth + 1)));
+                data1.setYear(String.valueOf(selectedYear));
+                text_view_data.getEditText().setText(data);
+            }
+        }, Integer.parseInt(data1.getYear()), Integer.parseInt(data1.getMonth()) - 1, Integer.parseInt(data1.getDay()));
+        mDatePicker.setTitle(title);
+        mDatePicker.show();
+    }
 
     public static void onLoadImageFromUrl(ImageView imageView, String URl, Context context) {
         Glide.with(context)

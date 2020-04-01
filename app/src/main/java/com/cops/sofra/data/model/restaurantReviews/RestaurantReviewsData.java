@@ -1,8 +1,7 @@
 
 package com.cops.sofra.data.model.restaurantReviews;
 
-import com.cops.sofra.data.model.restaurants.RestaurantData;
-import com.cops.sofra.data.model.restaurants.Restaurants;
+import com.cops.sofra.data.model.restaurantLogin.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -34,7 +33,7 @@ public class RestaurantReviewsData {
     private Client client;
     @SerializedName("restaurant")
     @Expose
-    private RestaurantData restaurant;
+    private User restaurant;
 
     public Integer getId() {
         return id;
@@ -100,11 +99,11 @@ public class RestaurantReviewsData {
         this.client = client;
     }
 
-    public RestaurantData getRestaurant() {
+    public User getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(RestaurantData restaurant) {
+    public void setRestaurant(User restaurant) {
         this.restaurant = restaurant;
     }
 

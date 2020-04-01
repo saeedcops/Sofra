@@ -16,6 +16,7 @@ import com.cops.sofra.R;
 import com.cops.sofra.data.model.newPassword.ResetPassword;
 import com.cops.sofra.databinding.FragmentForgetPasswordBinding;
 import com.cops.sofra.ui.BaseFragment;
+import com.cops.sofra.utils.CheckInput;
 import com.cops.sofra.viewModel.ClientResetPasswordViewModel;
 import com.cops.sofra.viewModel.RestaurantResetPasswordViewModel;
 
@@ -32,6 +33,7 @@ public class ForgetPasswordFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new CheckInput(getActivity());
     }
 
     @Nullable
@@ -80,7 +82,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                     bundle.putString("userType",userType);
                     newPasswordFragment.setArguments(bundle);
 
-                    getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
+                    getChildFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
                             .addToBackStack(null).commit();
 
                 }else {
@@ -107,7 +109,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                     bundle.putString("userType",userType);
                     newPasswordFragment.setArguments(bundle);
 
-                    getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
+                    getChildFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
                             .addToBackStack(null).commit();
 
                 }else {

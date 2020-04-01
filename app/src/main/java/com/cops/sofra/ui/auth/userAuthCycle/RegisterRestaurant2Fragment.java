@@ -1,8 +1,6 @@
 package com.cops.sofra.ui.auth.userAuthCycle;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +15,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.cops.sofra.R;
 import com.cops.sofra.data.model.restaurantLogin.RestaurantLogin;
 import com.cops.sofra.databinding.FragmentRegisterRestaurant2Binding;
-import com.cops.sofra.databinding.FragmentRegisterRestaurantBinding;
 import com.cops.sofra.ui.BaseFragment;
-import com.cops.sofra.ui.home.HomeActivity;
+import com.cops.sofra.utils.CheckInput;
 import com.cops.sofra.utils.MediaLoader;
 import com.cops.sofra.viewModel.RestaurantSignUpViewModel;
 import com.yanzhenjie.album.Action;
@@ -34,18 +31,18 @@ import java.util.Locale;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-import static com.cops.sofra.data.local.SharedPreferencesManger.SaveData;
+import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.SaveData;
 import static com.cops.sofra.utils.CheckInput.isPhoneSet;
-import static com.cops.sofra.utils.MultipartConverter.convertFileToMultipart;
-import static com.cops.sofra.utils.MultipartConverter.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
+import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
 
 public class RegisterRestaurant2Fragment extends BaseFragment {
 
 
     private FragmentRegisterRestaurant2Binding binding;
 
-    private String imagePath;
-    private AlbumFile albumFile;
+
+    private AlbumFile  albumFile;
     private RestaurantSignUpViewModel signUpViewModel;
     private String mName,mEmail,mDeliveryTime,mPassword,mPasswordConfirm,mMinimumCharger,mDeliveryCost,mRegionId;
 
@@ -54,6 +51,7 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new CheckInput(getActivity());
 
     }
 
@@ -92,7 +90,7 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
                             signUp();
                            // Toast.makeText(baseActivity, "good", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(baseActivity, "Please Pick Restaurant Logo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(baseActivity, getString(R.string.pick_restaurant_logo), Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -118,41 +116,46 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
 
         RequestBody phone= convertToRequestBody(binding.registerRestaurant2FragmentEtPhone.getText().toString());
         RequestBody whatsApp= convertToRequestBody(binding.registerRestaurant2FragmentEtWhats.getText().toString());
-        MultipartBody.Part image=convertFileToMultipart(imagePath,albumFile.getBucketName());
-        Log.i("image",image.toString());
+        MultipartBody.Part photo=convertFileToMultipart(albumFile.getPath(),"photo");
 
-        signUpViewModel.getRestaurant(name,email,password,passwordConfirm,phone,whatsApp,regionId,deliveryCost,minimumCharge,image,deliveryTime);
-        Log.i("methodCalled","ok");
+        signUpViewModel.getRestaurant(name,email,password,passwordConfirm,phone,whatsApp,regionId,deliveryCost,minimumCharge
+                ,photo,deliveryTime);
+
         signUpViewModel.restaurantSignUpMutableLiveData.observe(this, new Observer<RestaurantLogin>() {
             @Override
             public void onChanged(RestaurantLogin restaurantLogin) {
                 if (restaurantLogin.getStatus()==1) {
-                    Log.i("yes",restaurantLogin.getMsg());
-                    Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), restaurantLogin.getMsg(), Toast.LENGTH_LONG).show();
+
+
                     SaveData(getActivity(), "userType", "seller");
                     SaveData(getActivity(), "email", mEmail);
                     SaveData(getActivity(), "password", mPassword);
-                    SaveData(getActivity(), "apiToken", restaurantLogin.getData().getApiToken());
-                    Intent intent=new Intent(getActivity(), HomeActivity.class);
-                    startActivity(intent);
+
+                    UserLoginFragment userLoginFragment =new UserLoginFragment();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("userType","seller");
+                    userLoginFragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, userLoginFragment)
+                            .commit();
 
                 }else {
-                    Log.i("no",restaurantLogin.getMsg());
-                    Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     private void selectImage() {
+       final MediaLoader mediaLoader=new MediaLoader();
+        Album.initialize(AlbumConfig.newBuilder(getActivity())
+                .setAlbumLoader(mediaLoader)
+                .setLocale(Locale.getDefault())
+                .build());
 
-//        Album.initialize(AlbumConfig.newBuilder(getActivity())
-//                .setAlbumLoader(new MediaLoader())
-//                .setLocale(Locale.getDefault())
-//                .build());
 
-
-        Album.image(this)
+        Album.image(getActivity())
                 .singleChoice()
                 .camera(true)
                 .columnCount(2)
@@ -165,11 +168,11 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
                 .onResult(new Action<ArrayList<AlbumFile>>() {
                     @Override
                     public void onAction(@NonNull ArrayList<AlbumFile> result) {
-                        albumFile=result.get(0);
-                        MediaLoader mediaLoader=new MediaLoader();
-                        mediaLoader.load(binding.registerRestaurant2FragmentIbPhoto,albumFile);
-                        imagePath=albumFile.getPath();
-                       // previewImage();
+                      albumFile=result.get(0);
+
+                        mediaLoader.load(binding.registerRestaurant2FragmentIbPhoto,albumFile.getPath());
+
+
 
 
                     }

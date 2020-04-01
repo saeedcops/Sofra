@@ -6,9 +6,31 @@
     </data>
 
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20ssp"
+            android:text="@string/my_items"
+            style="@style/myTextView"
+            android:gravity="center"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/colorAccent"/>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/restaurant_categories_fragment_swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurant_categories_fragment_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </layout>

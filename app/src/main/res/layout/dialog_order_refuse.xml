@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/dialog_order_refuse_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/refuse_reason"
+            style="@style/myTextView"
+            android:gravity="center"
+            android:layout_margin="@dimen/_10sdp"/>
+
+        <EditText
+            android:id="@+id/dialog_order_refuse_et_reason"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_shape_ib"
+            android:layout_margin="@dimen/_24sdp"
+            android:lines="4"
+            android:maxLines="4"
+            style="@style/myTextView"
+            android:hint="@string/refuse_reason_please"
+            android:padding="@dimen/_10sdp"/>
+        <Button
+            android:id="@+id/dialog_order_refuse_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_btn"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/colorWhite"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16ssp"
+            android:gravity="center"
+            android:text="@string/refuse"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</layout>

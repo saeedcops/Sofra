@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/order_completed_adapter_rl_parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/rectangle_text_6"
+        >
+
+        <ImageView
+            android:id="@+id/order_completed_adapter_iv"
+            android:padding="@dimen/_5sdp"
+            android:background="@color/colorWhite"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/salad"/>
+        <TextView
+            android:id="@+id/order_completed_adapter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/myTextView"
+            android:text="name: is hassona"
+            android:layout_toEndOf="@+id/order_completed_adapter_iv"
+            android:textStyle="bold"
+            android:textSize="@dimen/_18ssp"/>
+        <TextView
+            android:id="@+id/order_completed_adapter_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/myTextView"
+            android:text="name: is hassona"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@+id/order_completed_adapter_name"
+            android:layout_toEndOf="@+id/order_completed_adapter_iv"
+            />
+        <TextView
+            android:id="@+id/order_completed_adapter_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/myTextView"
+            android:text="name: is hassona"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@+id/order_completed_adapter_number"
+            android:layout_toEndOf="@+id/order_completed_adapter_iv"
+           />
+        <TextView
+            android:id="@+id/order_completed_adapter_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/myTextView"
+            android:text="name: is hassona"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@+id/order_completed_adapter_total"
+            android:layout_toEndOf="@+id/order_completed_adapter_iv"
+            />
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/order_completed_adapter_btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_shape_2"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/order_done"/>
+            <Button
+                android:id="@+id/order_completed_adapter_btn_refused"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_shape_1"
+
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/order_refused"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

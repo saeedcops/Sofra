@@ -6,10 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.cops.sofra.data.model.restaurantLogin.RestaurantLogin;
-import com.cops.sofra.data.model.restaurants.RestaurantData;
-import com.cops.sofra.data.model.restaurants.Restaurants;
-
-import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -18,6 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.cops.sofra.data.api.RetroritClient.getClient;
+import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.SaveData;
 
 public class RestaurantSignUpViewModel extends ViewModel {
 
@@ -26,7 +23,7 @@ public class RestaurantSignUpViewModel extends ViewModel {
 
 
 
-    public void getRestaurant(RequestBody name, RequestBody email, RequestBody password, RequestBody passwordConf, RequestBody phone
+    public void getRestaurant( RequestBody name, RequestBody email, RequestBody password, RequestBody passwordConf, RequestBody phone
             , RequestBody whatsApp, RequestBody regionId, RequestBody deliveryCost, RequestBody minimumCharger, MultipartBody.Part photo, RequestBody deliveryTime){
 
         getClient().restaurantSignUp(name,email,password,passwordConf,phone,whatsApp,regionId,deliveryCost,minimumCharger,photo,deliveryTime).enqueue(new Callback<RestaurantLogin>() {
@@ -34,9 +31,11 @@ public class RestaurantSignUpViewModel extends ViewModel {
             public void onResponse(Call<RestaurantLogin> call, Response<RestaurantLogin> response) {
                 try {
 
-                    Log.i("response",response.body().getMsg());
-                    Log.i("xxxx",response.message());
-                    restaurantSignUpMutableLiveData.setValue(response.body());
+                    if (response.body().getStatus()==1) {
+
+
+                        restaurantSignUpMutableLiveData.setValue(response.body());
+                    }
 
                 }catch (Exception e){}
             }

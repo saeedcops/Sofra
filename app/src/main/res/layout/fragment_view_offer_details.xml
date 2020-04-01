@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="@string/offer_description"
+            android:textSize="@dimen/_20sdp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/rectangle_text_6">
+            <TextView
+                android:id="@+id/view_offer_details_fragment_name"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/offer_description"
+                 />
+            <TextView
+                android:id="@+id/view_offer_details_fragment_offer"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/offer_description"
+                />
+            <TextView
+                android:id="@+id/view_offer_details_fragment_from"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/offer_description"
+                />
+            <TextView
+                android:id="@+id/view_offer_details_fragment_to"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/offer_description"
+                />
+            <TextView
+                android:id="@+id/view_offer_details_fragment_price"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/offer_description"
+                />
+            <Button
+                android:id="@+id/restaurant_offer_list_fragment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/rectangle_btn"
+                android:text="@string/order_now"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20ssp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+</layout>

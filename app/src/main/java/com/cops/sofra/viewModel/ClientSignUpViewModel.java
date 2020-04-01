@@ -23,9 +23,9 @@ public class ClientSignUpViewModel extends ViewModel {
 
 
     public void getClientSignUp(RequestBody name, RequestBody email, RequestBody password, RequestBody passwordConf, RequestBody phone
-            ,  RequestBody regionId,   MultipartBody.Part photo){
+            ,  RequestBody regionId,   MultipartBody.Part profile_image){
 
-        getClient().clientSignUp(name,email,password,passwordConf,phone,regionId,photo).enqueue(new Callback<RestaurantLogin>() {
+        getClient().clientSignUp(name,email,password,passwordConf,phone,regionId,profile_image).enqueue(new Callback<RestaurantLogin>() {
             @Override
             public void onResponse(Call<RestaurantLogin> call, Response<RestaurantLogin> response) {
                 try {

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/dialog_add_item_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_image"
+            style="@style/myTextView"
+            android:gravity="center"
+            android:layout_margin="@dimen/_10sdp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/dialog_add_item_civ_add"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:background="@drawable/circle"
+            android:src="@drawable/ic_add"
+            android:layout_gravity="center"
+            android:padding="@dimen/_4sdp"/>
+        <EditText
+            android:id="@+id/dialog_add_item_et_name"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_shape_ib"
+            android:layout_margin="@dimen/_24sdp"
+            style="@style/myTextView"
+            android:hint="@string/item_name"
+            android:padding="@dimen/_10sdp"/>
+        <Button
+            android:id="@+id/dialog_add_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_shape_red"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/colorWhite"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16ssp"
+            android:gravity="center"
+            android:text="@string/add"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</layout>
