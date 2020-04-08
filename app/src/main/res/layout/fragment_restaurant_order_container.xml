@@ -7,6 +7,7 @@
     </data>
 
     <LinearLayout
+        android:background="@color/colorWhite"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,6 +20,7 @@
             android:background="?attr/colorPrimary"
             app:tabTextAppearance="@style/myTabText"
             app:tabIndicatorColor="@color/colorAccent"
+
             app:tabMode="fixed">
 
         </com.google.android.material.tabs.TabLayout>

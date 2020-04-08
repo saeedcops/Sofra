@@ -1,11 +1,14 @@
 package com.cops.sofra.ui.home.homeCycle;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.cops.sofra.adapters.CitySpinnerAdapter;
 import com.cops.sofra.adapters.RestaurantAdapter;
+import com.cops.sofra.adapters.RestaurantItemsAdapter;
 import com.cops.sofra.data.model.city.City;
 import com.cops.sofra.data.model.city.CityData;
 import com.cops.sofra.data.model.restaurantLogin.User;
@@ -46,6 +50,7 @@ public class RestaurantListFragment extends BaseFragment {
     private int lastPage;
     private int regionId=0;
     private String key="";
+    private boolean doubleBackToExistNotOnce;
 
 
     @Override
@@ -66,15 +71,34 @@ public class RestaurantListFragment extends BaseFragment {
         getRestaurant();
 
         getCity(getActivity(),cityList,binding.restaurantListFragmentSpCity);
-        regionId=binding.restaurantListFragmentSpCity.getSelectedItemPosition();
+
+        binding.restaurantListFragmentSpCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                regionId=position;
+                restaurantsList =new ArrayList<>();
+                restaurantAdapter =new RestaurantAdapter(getActivity(),restaurantsList);
+                layoutManager=new LinearLayoutManager(getActivity());
+                binding.restaurantListFragmentRv.setLayoutManager(layoutManager);
+                binding.restaurantListFragmentRv.setAdapter(restaurantAdapter);
+              //  getRestaurant();
+                restaurantViewModel.getRestaurantList(key,regionId,1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         binding.restaurantListFragmentSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 regionId=binding.restaurantListFragmentSpCity.getSelectedItemPosition();
                 key=query;
-
-                getRestaurant();
+                restaurantViewModel.getRestaurantList(key,regionId,1);
+               // getRestaurant();
                 return false;
             }
 
@@ -82,10 +106,13 @@ public class RestaurantListFragment extends BaseFragment {
             public boolean onQueryTextChange(String newText) {
                 key=newText;
 
-                getRestaurant();
+                restaurantViewModel.getRestaurantList(key,regionId,1);
                 return false;
             }
         });
+
+
+
 
         return view;
     }
@@ -93,9 +120,10 @@ public class RestaurantListFragment extends BaseFragment {
 
     private void getRestaurant() {
         restaurantViewModel = ViewModelProviders.of(getActivity()).get(RestaurantListViewModel.class);
-        if(!key.equals("")){
-            restaurantViewModel.getRestaurantList(key,regionId,1);
-        }
+//        if(!key.equals("")|| regionId>0){
+//
+//            restaurantViewModel.getRestaurantList(key,regionId,1);
+//        }
 
         restaurantAdapter = new RestaurantAdapter(getActivity(), restaurantsList);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -109,6 +137,7 @@ public class RestaurantListFragment extends BaseFragment {
 
                     if (lastPage != 0 && current_page != 1) {
                         onEndLess.previous_page = current_page;
+                        //loadMore.setVisibility(View.VISIBLE);
                         Log.i("page", String.valueOf(current_page));
                         restaurantViewModel.getRestaurantList(key,regionId,current_page);
                     } else {
@@ -137,11 +166,11 @@ public class RestaurantListFragment extends BaseFragment {
 
                     restaurantViewModel.getRestaurantList(key,regionId,1);
 
+                }else
+                {
+
+                    binding.restaurantListFragmentSwipe.setRefreshing(false);
                 }
-
-
-                binding.restaurantListFragmentSwipe.setRefreshing(false);
-
 
             }
         });
@@ -149,12 +178,23 @@ public class RestaurantListFragment extends BaseFragment {
         restaurantViewModel.restaurantsMutableLiveData.observe(this, new Observer<Restaurants>() {
             @Override
             public void onChanged(Restaurants restaurantData) {
-                lastPage=restaurantData.getData().getLastPage();
-              //  Log.i("page", String.valueOf(lastPage));
-                restaurantsList.clear();
-                restaurantsList.addAll(restaurantData.getData().getData());
+                if(restaurantData.getStatus()==1){
+                    lastPage=restaurantData.getData().getLastPage();
+                    binding.restaurantListFragmentSwipe.setRefreshing(false);
+                    if(!key.equals("")|| regionId>0 || onEndLess.current_page==1){
+                        restaurantsList.clear();
+                        restaurantsList.addAll(restaurantData.getData().getData());
+                    }else {
 
-                restaurantAdapter.notifyDataSetChanged();
+                        restaurantsList.addAll(restaurantData.getData().getData());
+                    }
+
+
+
+                    restaurantAdapter.notifyDataSetChanged();
+                }
+
+
 
             }
         });
@@ -164,6 +204,19 @@ public class RestaurantListFragment extends BaseFragment {
 
     @Override
     public void onBack() {
-        super.onBack();
+
+        if(doubleBackToExistNotOnce) {
+            baseActivity.finishAffinity();
+        }
+        this.doubleBackToExistNotOnce=true;
+        Toast.makeText(getActivity(), getString(R.string.exit), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExistNotOnce=false;
+            }
+        },2000);
+
     }
 }

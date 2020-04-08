@@ -1,5 +1,6 @@
 package com.cops.sofra.ui.home.homeCycleRestaurant;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.cops.sofra.ui.BaseFragment;
 
 import com.google.android.material.tabs.TabLayout;
 
+import static com.cops.sofra.utils.HelperMethod.isRTL;
+
 public class RestaurantOrderContainerFragment extends BaseFragment {
 
 
@@ -25,6 +28,7 @@ public class RestaurantOrderContainerFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Nullable
@@ -32,8 +36,13 @@ public class RestaurantOrderContainerFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_restaurant_order_container,container,false);
         View view = binding.getRoot();
+
+        binding.restaurantOrderContainerFragmentItemTabs.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+
         setUpActivity();
         setUpTab();
+
+
 
        return view;
     }
@@ -41,10 +50,12 @@ public class RestaurantOrderContainerFragment extends BaseFragment {
         if (binding.restaurantOrderContainerFragmentItemVp!=null) {
             setUpViewPager();
         }
+
         binding.restaurantOrderContainerFragmentItemTabs.setupWithViewPager(binding.restaurantOrderContainerFragmentItemVp);
         binding.restaurantOrderContainerFragmentItemTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 binding.restaurantOrderContainerFragmentItemVp.setCurrentItem(tab.getPosition());
 
             }
@@ -65,10 +76,20 @@ public class RestaurantOrderContainerFragment extends BaseFragment {
     private void setUpViewPager() {
 
         ViewPagerWithFragmentAdapter adapter =new ViewPagerWithFragmentAdapter(getChildFragmentManager());
+        if (isRTL()) {
 
-        adapter.addPager(new RestaurantOrderPendingFragment(),getString(R.string.pending_order));
-        adapter.addPager(new RestaurantOrderCurrentFragment(),getString(R.string.current_order));
-        adapter.addPager(new RestaurantOrderCompletedFragment(),getString(R.string.completed_order));
+
+            adapter.addPager(new RestaurantOrderCompletedFragment(), getString(R.string.completed_order));
+            adapter.addPager(new RestaurantOrderCurrentFragment(), getString(R.string.current_order));
+            adapter.addPager(new RestaurantOrderPendingFragment(), getString(R.string.pending_order));
+            binding.restaurantOrderContainerFragmentItemVp.setCurrentItem(3);
+
+        }else {
+
+            adapter.addPager(new RestaurantOrderPendingFragment(), getString(R.string.pending_order));
+            adapter.addPager(new RestaurantOrderCurrentFragment(), getString(R.string.current_order));
+            adapter.addPager(new RestaurantOrderCompletedFragment(), getString(R.string.completed_order));
+        }
         binding.restaurantOrderContainerFragmentItemVp.setAdapter(adapter);
     }
 

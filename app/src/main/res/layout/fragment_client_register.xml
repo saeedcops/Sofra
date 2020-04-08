@@ -6,144 +6,178 @@
     </data>
 
     <RelativeLayout
-        android:id="@+id/register_client_fragment_rl_parent"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/auth_bg_1">
 
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/auth_bg">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        android:orientation="vertical">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/register_client_fragment_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/_8sdp"
-            android:background="@drawable/circle_shape"
-            android:src="@drawable/ic_person_add"/>
-
-    <EditText
-        android:id="@+id/register_client_fragment_et_name"
-        style="@style/myAuthTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:drawableStart="@drawable/person"
-        android:hint="@string/name" />
-
-    <EditText
-        android:id="@+id/register_client_fragment_et_email"
-        style="@style/myAuthTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:drawableStart="@drawable/ic_email_white"
-        android:hint="@string/email" />
-        <EditText
-            android:id="@+id/register_client_fragment_et_phone"
-            style="@style/myAuthTextView"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_phone_white"
-            android:hint="@string/phone"
-            android:inputType="phone" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginBottom="@dimen/_10sdp">
+            android:layout_height="match_parent"
+            android:background="@drawable/auth_bg">
 
-            <TextView
-                style="@style/myAuthTextView"
+            <LinearLayout
+                android:id="@+id/register_client_fragment_rl_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/home"
-                android:drawableEnd="@drawable/ic_arrow_downward_white" />
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/register_client_fragment_sp_city"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_44sdp" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/register_client_fragment_iv"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_shape"
+                    android:src="@drawable/ic_person_add" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorWhite" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name">
 
-        </RelativeLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_client_fragment_et_name"
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/person" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginBottom="@dimen/_10sdp">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                style="@style/myAuthTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/home"
-                android:drawableEnd="@drawable/ic_arrow_downward_white" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email">
 
-            <Spinner
-                android:id="@+id/register_client_fragment_sp_region"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_44sdp"
-                />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_client_fragment_et_email"
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email_white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorWhite" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </RelativeLayout>
-        <EditText
-            android:id="@+id/register_client_fragment_et_password"
-            style="@style/myAuthTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_password_white"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone">
 
-        <EditText
-            android:id="@+id/register_client_fragment_et_password_confirm"
-            style="@style/myAuthTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_password_white"
-            android:hint="@string/password_confirm"
-            android:inputType="textPassword" />
-        <Button
-            android:id="@+id/register_client_fragment_btn_register"
-            style="@style/myAuthTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_20sdp"
-            android:drawableRight="@drawable/logout"
-            android:drawableTint="@color/colorWhite"
-            android:drawablePadding="-20dp"
-            android:background="@drawable/rectangle_btn"
-            android:text="@string/register" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_client_fragment_et_phone"
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_phone_white"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-    </ScrollView>
+
+                <RelativeLayout
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <TextView
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/home"
+                        android:drawableEnd="@drawable/ic_arrow_downward_white" />
+
+                    <Spinner
+                        android:id="@+id/register_client_fragment_sp_city"
+                        android:layout_width="match_parent"
+                        android:backgroundTint="#ED9FB1"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_44sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorWhite" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <TextView
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/home"
+                        android:drawableEnd="@drawable/ic_arrow_downward_white" />
+
+                    <Spinner
+                        android:id="@+id/register_client_fragment_sp_region"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#ED9FB1"
+                        android:layout_marginStart="@dimen/_44sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorWhite" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_client_fragment_et_password"
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_password_white"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password_confirm">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_client_fragment_et_password_confirm"
+                        style="@style/myAuthTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_password_white"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/register_client_fragment_btn_register"
+                    style="@style/myAuthTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:background="@drawable/rectangle_btn"
+                    android:text="@string/register" />
+
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </layout>

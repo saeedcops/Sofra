@@ -140,8 +140,10 @@ public class RestaurantReviewFragment extends BaseFragment {
                 if (restaurantReviewsData.size() == 0) {
 
                     restaurantReviewsViewModel.getRestaurantReviews(apiToken,1,restaurantId);
+                }else{
+                    binding.restaurantReviewFragmentSwipe.setRefreshing(false);
                 }
-                binding.restaurantReviewFragmentSwipe.setRefreshing(false);
+
             }
         });
 
@@ -150,8 +152,9 @@ public class RestaurantReviewFragment extends BaseFragment {
             @Override
             public void onChanged(RestaurantReviews restaurantReviews) {
                 if (restaurantReviews.getStatus()==1) {
+                    binding.restaurantReviewFragmentSwipe.setRefreshing(false);
                     lastPage=restaurantReviews.getData().getLastPage();
-                    restaurantReviewsData.clear();
+                    //restaurantReviewsData.clear();
                     restaurantReviewsData.addAll(restaurantReviews.getData().getData());
                     reviewAdapter.notifyDataSetChanged();
 

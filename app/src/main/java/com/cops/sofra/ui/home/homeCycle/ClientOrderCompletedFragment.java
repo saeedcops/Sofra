@@ -40,6 +40,8 @@ public class ClientOrderCompletedFragment extends BaseFragment {
     private OnEndLess onEndLess;
     private String apiToken;
     private int lastPage;
+    private String completed="completed";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,12 @@ public class ClientOrderCompletedFragment extends BaseFragment {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_client_order_completed,container,false);
         View view = binding.getRoot();
         setUpActivity();
+
+        clientGetOrderViewModel = ViewModelProviders.of(getActivity()).get(ClientGetOrderViewModel.class);
+        layoutManager= new LinearLayoutManager(getActivity());
+        binding.clientOrderCompletedFragmentRv.setLayoutManager(layoutManager);
+        orderAdapter=new ClientCompletedOrderAdapter(getActivity(),myOrderData);
+
       //  apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
         if (LoadData(getActivity(),"apiToken")!=null) {
 
@@ -62,10 +70,7 @@ public class ClientOrderCompletedFragment extends BaseFragment {
     }
 
     private void getCompletedOrder(){
-        clientGetOrderViewModel = ViewModelProviders.of(getActivity()).get(ClientGetOrderViewModel.class);
-        layoutManager= new LinearLayoutManager(getActivity());
-        binding.clientOrderCompletedFragmentRv.setLayoutManager(layoutManager);
-        orderAdapter=new ClientCompletedOrderAdapter(getActivity(),myOrderData);
+
 
         onEndLess = new OnEndLess(layoutManager, 1) {
             @Override
@@ -77,7 +82,7 @@ public class ClientOrderCompletedFragment extends BaseFragment {
 
                         onEndLess.previous_page = current_page;
 
-                        clientGetOrderViewModel.getOrderList(apiToken,"completed",current_page);
+                        clientGetOrderViewModel.getOrderList(apiToken,completed,current_page);
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
                     }
@@ -91,14 +96,14 @@ public class ClientOrderCompletedFragment extends BaseFragment {
         binding.clientOrderCompletedFragmentRv.addOnScrollListener(onEndLess);
         if (myOrderData.size()==0) {
 
-            clientGetOrderViewModel.getOrderList(apiToken,"completed",1);
+            clientGetOrderViewModel.getOrderList(apiToken,completed,1);
         }
         binding.clientOrderCompletedFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (myOrderData.size() == 0) {
 
-                    clientGetOrderViewModel.getOrderList(apiToken,"completed",onEndLess.current_page);
+                    clientGetOrderViewModel.getOrderList(apiToken,completed,onEndLess.current_page);
                 }else{
                     binding.clientOrderCompletedFragmentSwipe.setRefreshing(false);
                 }
@@ -113,8 +118,13 @@ public class ClientOrderCompletedFragment extends BaseFragment {
                 if (clientOrder.getStatus()==1) {
                     lastPage= clientOrder.getData().getLastPage();
                     Log.i("data",clientOrder.getMsg());
-                    myOrderData.clear();
-                    myOrderData.addAll(clientOrder.getData().getData());
+                    for (int i = 0; i < clientOrder.getData().getData().size(); i++) {
+                        if (!clientOrder.getData().getData().get(i).getState().equals("pending") ||
+                                !clientOrder.getData().getData().get(i).getState().equals("accepted")) {
+                            myOrderData.add(clientOrder.getData().getData().get(i));
+                        }
+
+                    }
                     orderAdapter.notifyDataSetChanged();
                 }
             }

@@ -33,8 +33,10 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.LoadData;
+import static com.cops.sofra.ui.home.HomeActivity.floatingActionButton;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class CreateItemFoodFragment extends BaseFragment {
 
@@ -49,13 +51,14 @@ public class CreateItemFoodFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        floatingActionButton.setVisibility(View.INVISIBLE);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_create_item_food,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
 
 
@@ -99,7 +102,12 @@ public class CreateItemFoodFragment extends BaseFragment {
             }
         });
 
-
+    binding.createItemFoodFragmentParent.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            disappearKeypad(getActivity(),view);
+        }
+    });
 
        return view;
     }
@@ -132,6 +140,8 @@ public class CreateItemFoodFragment extends BaseFragment {
 
                     Toast.makeText(baseActivity, restaurantNewItem.getMsg(), Toast.LENGTH_SHORT).show();
                     onBack();
+                }else {
+                    Toast.makeText(baseActivity, restaurantNewItem.getMsg(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -181,6 +191,7 @@ public class CreateItemFoodFragment extends BaseFragment {
 
     @Override
     public void onBack() {
+        floatingActionButton.setVisibility(View.VISIBLE);
         super.onBack();
     }
 }

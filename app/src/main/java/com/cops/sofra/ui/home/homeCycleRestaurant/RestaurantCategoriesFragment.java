@@ -1,6 +1,8 @@
 package com.cops.sofra.ui.home.homeCycleRestaurant;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,17 +37,20 @@ public class RestaurantCategoriesFragment extends BaseFragment implements HomeAc
 
 
     private FragmentRestaurantCategoriesBinding binding;
-    private RestaurantCategoriesViewModel restaurantCategoriesViewModel;
+    public RestaurantCategoriesViewModel restaurantCategoriesViewModel;
     private RestaurantCategoriesAdapter categoriesAdapter;
     private List<RestaurantCategoriesData> restaurantCategoriesData=new ArrayList<>();
     private LinearLayoutManager layoutManager;
     private String apiToken;
     private OnEndLess onEndLess;
     private int lastPage;
+    private boolean doubleBackToExistNotOnce;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Nullable
@@ -56,13 +61,15 @@ public class RestaurantCategoriesFragment extends BaseFragment implements HomeAc
         ((HomeActivity)getActivity()).setListener(this);
         setUpActivity();
 
+
 //        apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
 //        getCategories();
 
         if (LoadData(getActivity(),"apiToken")!=null) {
 
             apiToken=LoadData(getActivity(),"apiToken");
-            getCategories();
+
+                getCategories();
         }
 
 
@@ -75,16 +82,17 @@ public class RestaurantCategoriesFragment extends BaseFragment implements HomeAc
         ItemDialog dialog=new ItemDialog();
         dialog.show(getChildFragmentManager(),"Dialog");
 
+
     }
 
 
 
     private void getCategories() {
+
         restaurantCategoriesViewModel= ViewModelProviders.of(getActivity()).get(RestaurantCategoriesViewModel.class);
         categoriesAdapter=new RestaurantCategoriesAdapter(getActivity(),restaurantCategoriesData);
         layoutManager=new LinearLayoutManager(getActivity());
         binding.restaurantCategoriesFragmentRv.setLayoutManager(layoutManager);
-
 
         onEndLess = new OnEndLess(layoutManager, 1) {
             @Override
@@ -119,11 +127,16 @@ public class RestaurantCategoriesFragment extends BaseFragment implements HomeAc
         binding.restaurantCategoriesFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
                 if (restaurantCategoriesData.size() == 0) {
 
                     restaurantCategoriesViewModel.getRestaurantCategories(apiToken,1);
+
                 }
-                binding.restaurantCategoriesFragmentSwipe.setRefreshing(false);
+                else{
+                    binding.restaurantCategoriesFragmentSwipe.setRefreshing(false);
+                }
+
             }
         });
 
@@ -131,8 +144,13 @@ public class RestaurantCategoriesFragment extends BaseFragment implements HomeAc
             @Override
             public void onChanged(RestaurantCategories restaurantCategories) {
                 if (restaurantCategories.getStatus()==1) {
+                    binding.restaurantCategoriesFragmentSwipe.setRefreshing(false);
                     lastPage=restaurantCategories.getData().getLastPage();
-                    restaurantCategoriesData.clear();
+
+                    if(onEndLess.current_page==1){
+
+                        restaurantCategoriesData.clear();
+                    }
                     restaurantCategoriesData.addAll(restaurantCategories.getData().getData());
                     categoriesAdapter.notifyDataSetChanged();
 
@@ -148,9 +166,21 @@ public class RestaurantCategoriesFragment extends BaseFragment implements HomeAc
 
     }
 
+
     @Override
     public void onBack() {
-        super.onBack();
+        if(doubleBackToExistNotOnce) {
+            baseActivity.finishAffinity();
+        }
+        this.doubleBackToExistNotOnce=true;
+        Toast.makeText(getActivity(), getString(R.string.exit), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExistNotOnce=false;
+            }
+        },2000);
     }
 
 

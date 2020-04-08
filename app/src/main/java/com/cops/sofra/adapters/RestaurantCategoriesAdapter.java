@@ -84,6 +84,7 @@ public class RestaurantCategoriesAdapter extends RecyclerView.Adapter<Restaurant
                 ((HomeActivity) activity).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.home_activity_fl_frame,itemFoodListFragment).addToBackStack(null).commit();
 
+                categoryData.clear();
             }
         });
 
@@ -105,6 +106,8 @@ public class RestaurantCategoriesAdapter extends RecyclerView.Adapter<Restaurant
 
                             if (response.body().getStatus()==1) {
                                 Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                categoryData.remove(position);
+                                notifyDataSetChanged();
                             }else{
                                 Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                             }
@@ -127,6 +130,7 @@ public class RestaurantCategoriesAdapter extends RecyclerView.Adapter<Restaurant
                 ItemDialog itemDialog =new ItemDialog(categoryData.get(position).getName(),categoryData.get(position).getPhotoUrl(),categoryData.get(position).getId());
                 itemDialog.show(((HomeActivity) activity).getSupportFragmentManager(),"Dialog");
 
+                notifyDataSetChanged();
             }
         });
 

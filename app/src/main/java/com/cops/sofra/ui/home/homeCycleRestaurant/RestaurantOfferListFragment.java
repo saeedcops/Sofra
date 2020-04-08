@@ -124,8 +124,12 @@ public class RestaurantOfferListFragment extends BaseFragment {
             public void onChanged(MyOffer myOffer) {
 
                 if (myOffer.getStatus()==1) {
+                    binding.restaurantOfferListFragmentSwipe.setRefreshing(false);
                     lastPage= myOffer.getData().getLastPage();
-                    myOfferData.clear();
+                    if(onEndLess.current_page==1){
+                        myOfferData.clear();
+                    }
+                   //
                     myOfferData.addAll(myOffer.getData().getData());
                     offerAdapter.notifyDataSetChanged();
                 }

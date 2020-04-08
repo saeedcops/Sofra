@@ -9,10 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:background="@color/colorWhite"
             android:id="@+id/edit_client_profile_fragment_ll_parent"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/edit_client_profile_fragment_iv"
@@ -21,40 +22,72 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:src="@drawable/kfc"
                 android:layout_gravity="center"/>
-            <EditText
-                android:id="@+id/edit_client_profile_fragment_name"
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/myTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_text_4"
                 android:layout_margin="@dimen/_10sdp"
-                android:drawableStart="@drawable/person"
-                android:drawableTint="@color/colorText"
-                android:drawablePadding="@dimen/_5sdp"
-                android:padding="@dimen/_10sdp"
-                android:hint="@string/name"/>
-            <EditText
-                android:id="@+id/edit_client_profile_fragment_email"
+                android:hint="@string/name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_client_profile_fragment_name"
+                    style="@style/myTextView"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:drawableStart="@drawable/person"
+                    android:drawableTint="@color/colorText"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_text_5"
+                    android:padding="@dimen/_10sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/myTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_text_4"
                 android:layout_margin="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_email_white"
-                android:drawableTint="@color/colorText"
-                android:drawablePadding="@dimen/_10sdp"
-                android:padding="@dimen/_10sdp"
-                android:hint="@string/email"/>
-            <EditText
-                android:id="@+id/edit_client_profile_fragment_et_phone"
+                android:hint="@string/email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_client_profile_fragment_email"
+                    style="@style/myTextView"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:drawableStart="@drawable/ic_email_white"
+                    android:drawableTint="@color/colorText"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_text_5"
+                    android:padding="@dimen/_10sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/myTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_text_4"
                 android:layout_margin="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_phone_white"
-                android:inputType="phone"
-                android:drawableTint="@color/colorText"
-                android:drawablePadding="@dimen/_10sdp"
-                android:padding="@dimen/_10sdp"
-                android:hint="@string/phone"/>
+                android:hint="@string/phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_client_profile_fragment_et_phone"
+                    style="@style/myTextView"
+                    android:maxLines="1"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:drawableStart="@drawable/ic_phone_white"
+                    android:drawableTint="@color/colorText"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_text_5"
+                    android:padding="@dimen/_10sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"

@@ -94,8 +94,8 @@ public class CartFragment extends BaseFragment {
         binding.cartFragmentBtnAddMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getChildFragmentManager().beginTransaction().addToBackStack(null)
-                        .replace(R.id.home_activity_fl_frame,new RestaurantItemFoodListFragment(RestaurantItemFoodListFragment.restaurantId,RestaurantItemFoodListFragment.deliveryCost)).commit();
+                getFragmentManager().beginTransaction().addToBackStack(null)
+                        .replace(R.id.home_activity_fl_frame,new RestaurantListFragment()).commit();
             }
         });
        return view;
@@ -109,10 +109,12 @@ public class CartFragment extends BaseFragment {
             @Override
             public void onChanged(List<OrderItem> items) {
                 total=0.0;
+
                 for (int i = 0; i < items.size(); i++) {
                     total += items.get(i).getCount() * Double.parseDouble(items.get(i).getPrice());
 
                 }
+                binding.cartTvTotal.setText(total + " $");
 
                 orderItems.addAll(items);
                 selectedOrderAdapter.notifyDataSetChanged();

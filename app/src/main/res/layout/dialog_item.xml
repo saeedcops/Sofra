@@ -1,53 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
-    <LinearLayout
-        android:background="@color/colorPrimary"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
 
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/dialog_add_item_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/item_image"
-            style="@style/myTextView"
-            android:gravity="center"
-            android:layout_margin="@dimen/_10sdp"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/dialog_add_item_civ_add"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_90sdp"
-            android:background="@drawable/circle"
-            android:src="@drawable/ic_add"
-            android:layout_gravity="center"
-            android:padding="@dimen/_4sdp"/>
-        <EditText
-            android:id="@+id/dialog_add_item_et_name"
-            android:layout_width="@dimen/_250sdp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_ib"
-            android:layout_margin="@dimen/_24sdp"
-            style="@style/myTextView"
-            android:hint="@string/item_name"
-            android:padding="@dimen/_10sdp"/>
-        <Button
-            android:id="@+id/dialog_add_item_btn"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_red"
-            android:layout_margin="@dimen/_10sdp"
-            android:textColor="@color/colorWhite"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_16ssp"
-            android:gravity="center"
-            android:text="@string/add"
-            android:layout_gravity="center"/>
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/dialog_add_item_tv"
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="@string/item_image" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_35sdp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/dialog_add_item_civ_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_plus" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/item_name">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dialog_add_item_et_name"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+            <Button
+                android:id="@+id/dialog_add_item_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/rectangle_shape_red"
+                android:gravity="center"
+                android:text="@string/add"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
+
+        </LinearLayout>
+
+
 </layout>

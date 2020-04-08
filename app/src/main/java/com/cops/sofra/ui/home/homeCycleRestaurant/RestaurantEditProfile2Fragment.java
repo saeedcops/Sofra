@@ -29,6 +29,7 @@ import static com.cops.sofra.utils.CheckInput.isEditTextSet;
 import static com.cops.sofra.utils.CheckInput.isPhoneSet;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class RestaurantEditProfile2Fragment extends BaseFragment {
 
@@ -48,7 +49,7 @@ public class RestaurantEditProfile2Fragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_restaurant_edit_profile_2,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
 
         if (LoadData(getActivity(),"apiToken")!=null) {
@@ -84,6 +85,13 @@ public class RestaurantEditProfile2Fragment extends BaseFragment {
                    setProfile();
                }
 
+
+            }
+        });
+        binding.restaurantEditProfile2FragmentLlParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
 
             }
         });

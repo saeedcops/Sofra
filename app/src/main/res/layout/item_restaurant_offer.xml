@@ -11,9 +11,7 @@
         android:id="@+id/restaurant_offer_adapter_swipe_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_margin="@dimen/_10sdp"
         android:elevation="@dimen/_4sdp"
         app:dragEdge="left"
         app:mode="same_level">
@@ -21,7 +19,6 @@
         <LinearLayout
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_90sdp"
-            android:layout_margin="@dimen/_7sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -43,6 +40,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:elevation="@dimen/_10sdp"
             android:id="@+id/restaurant_offer_adapter_rl_parent"
             android:orientation="vertical"
             android:layout_width="match_parent"

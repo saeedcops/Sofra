@@ -54,7 +54,7 @@ public class RestaurantItemFoodListFragment extends BaseFragment implements Cate
     private int lastPage;
     private int categoryId=0;
     public static int restaurantId;
-    public static String deliveryCost;
+    public static String deliveryCost="50";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +78,17 @@ public class RestaurantItemFoodListFragment extends BaseFragment implements Cate
     @Override
     public void recyclerViewListClicked(View v, int position) {
         categoryId=position+1;
-        getRestaurantItems();
+        if(categoryId>0){
+            Log.i("clear", String.valueOf(onEndLess.current_page));
+            restaurantItemsData=new ArrayList<>();
+            itemsAdapter =new RestaurantItemsAdapter(getActivity(),restaurantItemsData);
+            itemsLayoutManager=new LinearLayoutManager(getActivity());
+            binding.restaurantItemFoodListFragmentRvFood.setLayoutManager(itemsLayoutManager);
+            binding.restaurantItemFoodListFragmentRvFood.setAdapter(itemsAdapter);
+//            restaurantItemsData.clear();
+            getRestaurantItems();
+        }
+       // getRestaurantItems();
         Log.i("position", String.valueOf(categoryId));
     }
 
@@ -137,12 +147,18 @@ public class RestaurantItemFoodListFragment extends BaseFragment implements Cate
         restaurantItemsViewModel.restaurantsItemsMutableLiveData.observe(this, new Observer<RestaurantItems>() {
             @Override
             public void onChanged(RestaurantItems restaurantItems) {
-                lastPage=restaurantItems.getData().getLastPage();
-                restaurantItemsData.clear();
-                binding.restaurantItemFoodListFragmentSwipe.setRefreshing(false);
 
-                restaurantItemsData.addAll(restaurantItems.getData().getData());
-                itemsAdapter.notifyDataSetChanged();
+                if (restaurantItems.getStatus()==1) {
+
+                    lastPage=restaurantItems.getData().getLastPage();
+
+
+                    binding.restaurantItemFoodListFragmentSwipe.setRefreshing(false);
+
+                    restaurantItemsData.addAll(restaurantItems.getData().getData());
+                    itemsAdapter.notifyDataSetChanged();
+                }
+
             }
         });
 
@@ -165,7 +181,7 @@ public class RestaurantItemFoodListFragment extends BaseFragment implements Cate
         categoryViewModel.categoryMutableLiveData.observe(this, new Observer<List<CategoryData>>() {
             @Override
             public void onChanged(List<CategoryData> categoryData) {
-                categoryDataList.clear();
+               // categoryDataList.clear();
                 categoryDataList.addAll(categoryData);
                 categoryAdapter.notifyDataSetChanged();
 

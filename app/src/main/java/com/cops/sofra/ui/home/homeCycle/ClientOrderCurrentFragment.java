@@ -40,6 +40,7 @@ public class ClientOrderCurrentFragment extends BaseFragment {
     private OnEndLess onEndLess;
     private String apiToken;
     private int lastPage;
+    private String current="current";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +54,11 @@ public class ClientOrderCurrentFragment extends BaseFragment {
         View view = binding.getRoot();
         setUpActivity();
 
+        clientGetOrderViewModel = ViewModelProviders.of(getActivity()).get(ClientGetOrderViewModel.class);
+        layoutManager= new LinearLayoutManager(getActivity());
+        binding.clientOrderCurrentFragmentRv.setLayoutManager(layoutManager);
+        orderAdapter=new ClientCurrentOrderAdapter(getActivity(),myOrderData);
+
        // apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
         if (LoadData(getActivity(),"apiToken")!=null) {
 
@@ -64,10 +70,7 @@ public class ClientOrderCurrentFragment extends BaseFragment {
     }
 
     private void getCurrentOrder(){
-        clientGetOrderViewModel = ViewModelProviders.of(getActivity()).get(ClientGetOrderViewModel.class);
-        layoutManager= new LinearLayoutManager(getActivity());
-        binding.clientOrderCurrentFragmentRv.setLayoutManager(layoutManager);
-        orderAdapter=new ClientCurrentOrderAdapter(getActivity(),myOrderData);
+
 
         onEndLess = new OnEndLess(layoutManager, 1) {
             @Override
@@ -79,7 +82,7 @@ public class ClientOrderCurrentFragment extends BaseFragment {
 
                         onEndLess.previous_page = current_page;
 
-                        clientGetOrderViewModel.getOrderList(apiToken,"current",current_page);
+                        clientGetOrderViewModel.getOrderList(apiToken,current,current_page);
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
                     }
@@ -93,14 +96,14 @@ public class ClientOrderCurrentFragment extends BaseFragment {
         binding.clientOrderCurrentFragmentRv.addOnScrollListener(onEndLess);
         if (myOrderData.size()==0) {
 
-            clientGetOrderViewModel.getOrderList(apiToken,"current",1);
+            clientGetOrderViewModel.getOrderList(apiToken,current,1);
         }
         binding.clientOrderCurrentFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (myOrderData.size() == 0) {
 
-                    clientGetOrderViewModel.getOrderList(apiToken,"current",onEndLess.current_page);
+                    clientGetOrderViewModel.getOrderList(apiToken,current,onEndLess.current_page);
                 }else{
                     binding.clientOrderCurrentFragmentSwipe.setRefreshing(false);
                 }
@@ -113,10 +116,16 @@ public class ClientOrderCurrentFragment extends BaseFragment {
             @Override
             public void onChanged(ClientOrder clientOrder) {
                 if (clientOrder.getStatus()==1) {
+                    binding.clientOrderCurrentFragmentSwipe.setRefreshing(false);
                     lastPage= clientOrder.getData().getLastPage();
                     Log.i("data",clientOrder.getMsg());
-                    myOrderData.clear();
-                    myOrderData.addAll(clientOrder.getData().getData());
+
+                    for (int i = 0; i < clientOrder.getData().getData().size(); i++) {
+                        if (clientOrder.getData().getData().get(i).getState().equals("accepted")) {
+                            myOrderData.add(clientOrder.getData().getData().get(i));
+                        }
+
+                    }
                     orderAdapter.notifyDataSetChanged();
                 }
             }

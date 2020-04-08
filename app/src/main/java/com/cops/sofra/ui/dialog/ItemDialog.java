@@ -19,6 +19,7 @@ import com.cops.sofra.R;
 import com.cops.sofra.data.model.restaurantCategories.RestaurantCategories;
 import com.cops.sofra.data.model.updateCategory.UpdateCategory;
 import com.cops.sofra.databinding.DialogItemBinding;
+import com.cops.sofra.ui.home.homeCycleRestaurant.RestaurantCategoriesFragment;
 import com.cops.sofra.utils.MediaLoader;
 import com.cops.sofra.viewModel.RestaurantNewCategoryViewModel;
 import com.cops.sofra.viewModel.RestaurantUpdateCategoryViewModel;
@@ -52,12 +53,12 @@ public class ItemDialog extends DialogFragment {
     private String itemName;
     private String imageUrl;
     private int mCategoryId;
-
     private AlbumFile albumFile;
     private DialogItemBinding binding;
     private RestaurantNewCategoryViewModel newCategoryViewModel;
     private RestaurantUpdateCategoryViewModel updateCategoryViewModel;
     private String mApiToken;
+
 
     @Nullable
     @Override
@@ -74,6 +75,7 @@ public class ItemDialog extends DialogFragment {
 
         if(mCategoryId>0 && !itemName.equals("") && !imageUrl.equals("") ){
             binding.dialogAddItemTv.setText(getString(R.string.update_item));
+
             binding.dialogAddItemEtName.setText(itemName);
             binding.dialogAddItemBtn.setText(getString(R.string.update));
             binding.dialogAddItemCivAdd.setBackground(null);
@@ -131,6 +133,8 @@ public class ItemDialog extends DialogFragment {
                             setNewItem();
                             getDialog().dismiss();
 
+
+
                         } else {
 
                             Toast.makeText(getActivity(), getString(R.string.select_image), Toast.LENGTH_SHORT).show();
@@ -160,6 +164,7 @@ public class ItemDialog extends DialogFragment {
             public void onChanged(RestaurantCategories restaurantCategories) {
                 if (restaurantCategories.getStatus()==1) {
                     Toast.makeText(getActivity(), restaurantCategories.getMsg(), Toast.LENGTH_LONG).show();
+
                 }else
                     Toast.makeText(getActivity(), restaurantCategories.getMsg(), Toast.LENGTH_LONG).show();
 
@@ -187,6 +192,7 @@ public class ItemDialog extends DialogFragment {
             public void onChanged(UpdateCategory updateCategory) {
                 if (updateCategory.getStatus()==1) {
                     Toast.makeText(getActivity(), updateCategory.getMsg(), Toast.LENGTH_LONG).show();
+
                 }else
                     Toast.makeText(getActivity(), updateCategory.getMsg(), Toast.LENGTH_LONG).show();
 

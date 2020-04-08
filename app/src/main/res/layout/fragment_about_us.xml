@@ -6,6 +6,7 @@
     </data>
 
     <LinearLayout
+
         android:orientation="vertical"
         android:background="@drawable/about_us"
         android:layout_width="match_parent"

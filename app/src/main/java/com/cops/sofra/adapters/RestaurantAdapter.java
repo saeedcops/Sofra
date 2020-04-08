@@ -25,12 +25,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     private Context context;
     private Activity activity;
     private List<User> restaurantDataList = new ArrayList<>();
-//    public static int restaurantId;
-//    public static String city;
-//    public static String region;
-//    public static String minimumCharger;
-//    public static String deliveryCost;
-//    public static String availability;
 
     public RestaurantAdapter(Activity activity, List<User> restaurantDataList) {
         this.context = activity;
@@ -63,6 +57,15 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         holder.binding.restaurantAdapterTvMiniCost.setText(activity.getString(R.string.minimum_charger)+" : "+restaurantDataList.get(position).getMinimumCharger()+" $");
         Glide.with(context).load(restaurantDataList.get(position).getPhotoUrl()).into(holder.binding.restaurantAdapterIv);
 
+        if(restaurantDataList.get(position).getAvailability().equals("open")){
+
+            holder.binding.restaurantAdapterTvStatus.setText(activity.getString(R.string.open));
+        }else if(restaurantDataList.get(position).getAvailability().equals("close")){
+            holder.binding.restaurantAdapterTvStatus.setText(activity.getString(R.string.close));
+            holder.binding.restaurantAdapterTvStatus.setCompoundDrawables(null,null,null,null);
+
+        }
+
         if (restaurantDataList.get(position).getRate()<2) {
             holder.binding.restaurantAdapterIvStar1.setImageResource(R.drawable.star_like);
         }else if(restaurantDataList.get(position).getRate()<3){
@@ -80,6 +83,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         }
 
 
+
     }
 
 //
@@ -89,12 +93,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             @Override
             public void onClick(View v) {
 
-//                restaurantId=restaurantDataList.get(position).getId();
-//                city=restaurantDataList.get(position).getRegion().getCity().getName();
-//                region=restaurantDataList.get(position).getRegion().getName();
-//                minimumCharger=restaurantDataList.get(position).getMinimumCharger();
-              //  deliveryCost=restaurantDataList.get(position).getDeliveryCost();
-//                availability=restaurantDataList.get(position).getAvailability();
 
                 ((HomeActivity) activity).getSupportFragmentManager().beginTransaction()
                         .addToBackStack(null)

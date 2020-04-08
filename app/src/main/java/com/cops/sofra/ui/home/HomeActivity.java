@@ -28,6 +28,7 @@ import com.cops.sofra.ui.home.homeCycleRestaurant.RestaurantNotificationsFragmen
 import com.cops.sofra.ui.home.homeCycleRestaurant.RestaurantOrderContainerFragment;
 import com.cops.sofra.ui.splash.SplashActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.LoadData;
 
@@ -35,6 +36,7 @@ import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger
 public class HomeActivity extends BaseActivity {
 
     //to set onClickListener in fab from fragment implement interface and method
+    public static FloatingActionButton floatingActionButton;
 
     public interface FabButtonClick {
         void onFabClicked();
@@ -53,6 +55,7 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        floatingActionButton=(FloatingActionButton)findViewById(R.id.home_activity_fab);
         
         binding.homeActivityIvNotification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +101,7 @@ public class HomeActivity extends BaseActivity {
             public void onClick(View v) {
 
                 fabButtonClick.onFabClicked();
+
 
 
             }

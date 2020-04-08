@@ -1,93 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
+        <LinearLayout
+            android:background="@color/colorWhite"
+            android:id="@+id/edit_item_food_fragment_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/item_image"
-            style="@style/myTextView"
-            android:gravity="center"
-            android:textSize="@dimen/_20ssp"
-            android:layout_margin="@dimen/_10sdp"/>
-        <ImageView
-            android:id="@+id/edit_item_food_fragment_iv"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_90sdp"
-            android:src="@drawable/ic_image"
-            android:layout_gravity="center"/>
-        <EditText
-            android:id="@+id/edit_item_food_fragment_et_name"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_ib"
-            style="@style/myTextView"
-            android:hint="@string/product_name"
-            android:padding="@dimen/_5sdp"/>
-        <EditText
-            android:id="@+id/edit_item_food_fragment_et_description"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_ib"
-            style="@style/myTextView"
-            android:lines="3"
-            android:hint="@string/product_description"
-            android:padding="@dimen/_5sdp"/>
-        <EditText
-            android:id="@+id/edit_item_food_fragment_et_price"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:inputType="phone"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_ib"
-            style="@style/myTextView"
-            android:hint="@string/price"
-            android:padding="@dimen/_5sdp"/>
-        <EditText
-            android:id="@+id/edit_item_food_fragment_et_price_offer"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_ib"
-            android:inputType="phone"
-            style="@style/myTextView"
-            android:hint="@string/price_offer"
-            android:padding="@dimen/_5sdp"/>
-        <EditText
-            android:id="@+id/edit_item_food_fragment_et_time"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape_ib"
-            android:inputType="phone"
-            style="@style/myTextView"
-            android:hint="@string/preparing_time"
-            android:padding="@dimen/_5sdp"/>
-        <Button
-            android:id="@+id/edit_item_food_fragment_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_btn"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="@string/edit"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="@string/item_image"
+                android:textSize="@dimen/_20ssp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_35sdp"
+
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/edit_item_food_fragment_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_plus" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/product_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_item_food_fragment_et_name"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/product_description">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_item_food_fragment_et_description"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:lines="3"
+                        android:padding="@dimen/_10sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_item_food_fragment_et_price"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:inputType="phone"
+                        android:padding="@dimen/_10sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/price_offer">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_item_food_fragment_et_price_offer"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:inputType="phone"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/preparing_time">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_item_food_fragment_et_time"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:inputType="phone"
+                        android:padding="@dimen/_10sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/edit_item_food_fragment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/rectangle_btn"
+                android:text="@string/edit"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
     </ScrollView>
+
 </layout>

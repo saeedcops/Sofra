@@ -41,6 +41,8 @@ public class RestaurantOrderCompletedFragment extends BaseFragment {
     private OnEndLess onEndLess;
     private String apiToken;
     private int lastPage;
+    private String completed="completed";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +80,7 @@ public class RestaurantOrderCompletedFragment extends BaseFragment {
 
                         onEndLess.previous_page = current_page;
 
-                        restaurantGetOrderViewModel.getOrderList(apiToken,"completed",current_page);
+                        restaurantGetOrderViewModel.getOrderList(apiToken,completed,current_page);
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
                     }
@@ -92,16 +94,18 @@ public class RestaurantOrderCompletedFragment extends BaseFragment {
         binding.restaurantOrderCompletedFragmentRv.addOnScrollListener(onEndLess);
         if (myOrderData.size()==0) {
 
-            restaurantGetOrderViewModel.getOrderList(apiToken,"completed",1);
+            restaurantGetOrderViewModel.getOrderList(apiToken,completed,1);
         }
         binding.restaurantOrderCompletedFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (myOrderData.size() == 0) {
 
-                    restaurantGetOrderViewModel.getOrderList(apiToken,"completed",1);
+                    restaurantGetOrderViewModel.getOrderList(apiToken,completed,1);
+                }else{
+                    binding.restaurantOrderCompletedFragmentSwipe.setRefreshing(false);
                 }
-                binding.restaurantOrderCompletedFragmentSwipe.setRefreshing(false);
+
             }
         });
 
@@ -109,11 +113,17 @@ public class RestaurantOrderCompletedFragment extends BaseFragment {
         restaurantGetOrderViewModel.restaurantsGetOrderMutableLiveData.observe(this, new Observer<MyOrder>() {
             @Override
             public void onChanged(MyOrder myOrder) {
+                binding.restaurantOrderCompletedFragmentSwipe.setRefreshing(false);
                 if (myOrder.getStatus()==1) {
                     lastPage= myOrder.getData().getLastPage();
                     Log.i("data",myOrder.getMsg());
-                    myOrderData.clear();
-                    myOrderData.addAll(myOrder.getData().getData());
+                    for (int i = 0; i < myOrder.getData().getData().size(); i++) {
+                        if (!myOrder.getData().getData().get(i).getState().equals("pending") &&
+                                !myOrder.getData().getData().get(i).getState().equals("accepted")) {
+                            myOrderData.add(myOrder.getData().getData().get(i));
+                        }
+
+                    }
                     orderAdapter.notifyDataSetChanged();
                 }
             }

@@ -64,6 +64,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
        // super.onBackPressed();
+      //  this.finishAffinity();
         System.exit(0);
     }
 }

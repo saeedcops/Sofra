@@ -20,11 +20,14 @@ import com.cops.sofra.databinding.FragmentUserLoginBinding;
 import com.cops.sofra.ui.BaseFragment;
 import com.cops.sofra.ui.home.HomeActivity;
 import com.cops.sofra.ui.home.homeCycle.CompleteOrderFragment;
+import com.cops.sofra.ui.splash.SplashActivity;
 import com.cops.sofra.utils.CheckInput;
 import com.cops.sofra.viewModel.ClientLoginViewModel;
 import com.cops.sofra.viewModel.RestaurantLoginViewModel;
 
+import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.LoadData;
 import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.SaveData;
+import static com.cops.sofra.ui.auth.userAuthCycle.ClientRegisterFragment.isRegistered;
 import static com.cops.sofra.utils.CheckInput.isEditTextSet;
 import static com.cops.sofra.utils.CheckInput.isEmailValid;
 import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
@@ -49,6 +52,12 @@ public class UserLoginFragment extends BaseFragment {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_user_login,container,false);
        final View view = binding.getRoot();
         setUpActivity();
+
+        if(LoadData(getActivity(), "email")!=null){
+
+            binding.userLoginFragmentEtUserName.setText(LoadData(getActivity(), "email"));
+            binding.userLoginFragmentEtPassword.setText(LoadData(getActivity(), "password"));
+        }
 
         if (getArguments()!=null) {
             userType=getArguments().getString("userType");
@@ -137,7 +146,14 @@ public class UserLoginFragment extends BaseFragment {
                         SaveData(getActivity(), "address",restaurantLogin.getData().getUser().getRegion().getName());
 
                         Log.i("address",restaurantLogin.getData().getUser().getRegion().getName());
+                        if(isRegistered){
+                            isRegistered=false;
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            intent.putExtra("userType","client");
+                            startActivity(intent);
+                        }else
                         onBack();
+
                     }else {
                         Toast.makeText(baseActivity, restaurantLogin.getMsg(), Toast.LENGTH_SHORT).show();
                     }

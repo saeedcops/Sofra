@@ -24,6 +24,7 @@ import com.cops.sofra.databinding.FragmentEditClientProfileBinding;
 import com.cops.sofra.databinding.FragmentRestaurantListBinding;
 import com.cops.sofra.ui.BaseFragment;
 import com.cops.sofra.ui.home.HomeActivity;
+import com.cops.sofra.utils.CheckInput;
 import com.cops.sofra.utils.MediaLoader;
 import com.cops.sofra.viewModel.client.ClientEditProfileViewModel;
 import com.cops.sofra.viewModel.client.ClientGetProfileViewModel;
@@ -47,6 +48,7 @@ import static com.cops.sofra.utils.CheckInput.isPhoneSet;
 import static com.cops.sofra.utils.GeneralResponse.getCityAndRegion;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class EditClientProfileFragment extends BaseFragment {
 
@@ -62,13 +64,14 @@ public class EditClientProfileFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new CheckInput(getActivity());
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_edit_client_profile,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
         if(LoadData(getActivity(), "apiToken")!=null){
             apiToken=LoadData(getActivity(), "apiToken");
@@ -95,6 +98,13 @@ public class EditClientProfileFragment extends BaseFragment {
                     }
 
                 }
+            }
+        });
+
+        binding.editClientProfileFragmentLlParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
             }
         });
 

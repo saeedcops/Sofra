@@ -42,6 +42,7 @@ public class RestaurantOrderCurrentFragment extends BaseFragment {
     private OnEndLess onEndLess;
     private String apiToken;
     private int lastPage;
+    private String current="current";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class RestaurantOrderCurrentFragment extends BaseFragment {
 
                         onEndLess.previous_page = current_page;
 
-                        restaurantGetOrderViewModel.getOrderList(apiToken,"current",current_page);
+                        restaurantGetOrderViewModel.getOrderList(apiToken,current,current_page);
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
                     }
@@ -95,16 +96,18 @@ public class RestaurantOrderCurrentFragment extends BaseFragment {
         binding.restaurantOrderCurrentFragmentRv.addOnScrollListener(onEndLess);
         if (myOrderData.size()==0) {
 
-            restaurantGetOrderViewModel.getOrderList(apiToken,"current",1);
+            restaurantGetOrderViewModel.getOrderList(apiToken,current,1);
         }
         binding.restaurantOrderCurrentFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (myOrderData.size() == 0) {
 
-                    restaurantGetOrderViewModel.getOrderList(apiToken,"current",1);
+                    restaurantGetOrderViewModel.getOrderList(apiToken,current,1);
+                }else {
+                    binding.restaurantOrderCurrentFragmentSwipe.setRefreshing(false);
                 }
-                binding.restaurantOrderCurrentFragmentSwipe.setRefreshing(false);
+
             }
         });
 
@@ -113,10 +116,15 @@ public class RestaurantOrderCurrentFragment extends BaseFragment {
             @Override
             public void onChanged(MyOrder myOrder) {
                 if (myOrder.getStatus()==1) {
+                    binding.restaurantOrderCurrentFragmentSwipe.setRefreshing(false);
                     lastPage= myOrder.getData().getLastPage();
                     Log.i("data",myOrder.getMsg());
-                    myOrderData.clear();
-                    myOrderData.addAll(myOrder.getData().getData());
+                    for (int i = 0; i < myOrder.getData().getData().size(); i++) {
+                        if (myOrder.getData().getData().get(i).getState().equals("accepted")) {
+                            myOrderData.add(myOrder.getData().getData().get(i));
+                        }
+
+                    }
                     orderAdapter.notifyDataSetChanged();
                 }
             }

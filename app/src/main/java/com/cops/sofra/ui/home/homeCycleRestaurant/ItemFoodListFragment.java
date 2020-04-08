@@ -1,9 +1,12 @@
 package com.cops.sofra.ui.home.homeCycleRestaurant;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +45,7 @@ public class ItemFoodListFragment extends BaseFragment implements HomeActivity.F
     private OnEndLess onEndLess;
     private int lastPage;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +58,7 @@ public class ItemFoodListFragment extends BaseFragment implements HomeActivity.F
         View view = binding.getRoot();
         setUpActivity();
         ((HomeActivity)getActivity()).setListener(this);
-        //apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
+      //  apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
         if (LoadData(getActivity(),"apiToken")!=null) {
 
            apiToken=LoadData(getActivity(),"apiToken");
@@ -71,12 +75,18 @@ public class ItemFoodListFragment extends BaseFragment implements HomeActivity.F
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        restaurantGetFoodItemListViewModel.getFoodItemList(apiToken,categoryId,1);
+    }
+
+    @Override
     public void onFabClicked() {
         Bundle bundle=new Bundle();
         bundle.putInt("categoryId",categoryId);
         CreateItemFoodFragment createItemFoodFragment=new CreateItemFoodFragment();
         createItemFoodFragment.setArguments(bundle);
-
         getFragmentManager().beginTransaction()
                 .addToBackStack(null).replace(R.id.home_activity_fl_frame,createItemFoodFragment).commit();
 
@@ -122,8 +132,10 @@ public class ItemFoodListFragment extends BaseFragment implements HomeActivity.F
                 if (restaurantItems.size() == 0) {
 
                     restaurantGetFoodItemListViewModel.getFoodItemList(apiToken,categoryId,1);
+                }else {
+                    binding.itemFoodListFragmentSwipe.setRefreshing(false);
                 }
-                binding.itemFoodListFragmentSwipe.setRefreshing(false);
+
             }
         });
 
@@ -132,8 +144,14 @@ public class ItemFoodListFragment extends BaseFragment implements HomeActivity.F
             @Override
             public void onChanged(RestaurantItems Items) {
                 if (Items.getStatus()==1) {
+
+                    binding.itemFoodListFragmentSwipe.setRefreshing(false);
                     lastPage=Items.getData().getLastPage();
-                    restaurantItems.clear();
+                    if(onEndLess.current_page==1){
+
+                        restaurantItems.clear();
+                    }
+
                     restaurantItems.addAll(Items.getData().getData());
                     itemFoodListAdapter.notifyDataSetChanged();
                 }

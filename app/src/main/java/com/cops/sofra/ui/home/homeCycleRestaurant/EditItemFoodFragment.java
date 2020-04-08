@@ -32,8 +32,10 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.LoadData;
+import static com.cops.sofra.ui.home.HomeActivity.floatingActionButton;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class EditItemFoodFragment extends BaseFragment {
 
@@ -47,13 +49,14 @@ public class EditItemFoodFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        floatingActionButton.setVisibility(View.INVISIBLE);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          binding= DataBindingUtil.inflate(inflater,R.layout.fragment_edit_item_food,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
 
         if(LoadData(getActivity(),"apiToken")!=null){
@@ -99,6 +102,13 @@ public class EditItemFoodFragment extends BaseFragment {
                 }else {
                     editItem();
                 }
+            }
+        });
+
+        binding.editItemFoodFragmentParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
             }
         });
 
@@ -191,5 +201,6 @@ public class EditItemFoodFragment extends BaseFragment {
     @Override
     public void onBack() {
         super.onBack();
+        floatingActionButton.setVisibility(View.VISIBLE);
     }
 }

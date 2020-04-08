@@ -95,6 +95,8 @@ public class RestaurantItemFoodListAdapter extends RecyclerView.Adapter<Restaura
                     public void onResponse(Call<NewOffer> call, Response<NewOffer> response) {
                         if (response.body().getStatus()==1) {
                             Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                            restaurantItemsData.remove(position);
+                            notifyDataSetChanged();
                         }else{
                             Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                         }

@@ -19,6 +19,10 @@ import com.cops.sofra.ui.home.homeCycleRestaurant.RestaurantOrderCurrentFragment
 import com.cops.sofra.ui.home.homeCycleRestaurant.RestaurantOrderPendingFragment;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Locale;
+
+import static com.cops.sofra.utils.HelperMethod.isRTL;
+
 public class ClientOrderContainerFragment extends BaseFragment {
 
 
@@ -34,6 +38,7 @@ public class ClientOrderContainerFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_client_order_container,container,false);
         View view = binding.getRoot();
+        binding.clientOrderContainerFragmentItemTabs.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         setUpActivity();
         setUpTab();
 
@@ -67,12 +72,20 @@ public class ClientOrderContainerFragment extends BaseFragment {
     private void setUpViewPager() {
 
         ViewPagerWithFragmentAdapter adapter =new ViewPagerWithFragmentAdapter(getChildFragmentManager());
+        if (isRTL()) {
+            adapter.addPager(new ClientOrderCompletedFragment(),getString(R.string.completed_order));
+            adapter.addPager(new ClientOrderCurrentFragment(),getString(R.string.current_order));
+            adapter.addPager(new ClientOrderPendingFragment(),getString(R.string.pending_order));
+        }else {
+            adapter.addPager(new ClientOrderPendingFragment(),getString(R.string.pending_order));
+            adapter.addPager(new ClientOrderCurrentFragment(),getString(R.string.current_order));
+            adapter.addPager(new ClientOrderCompletedFragment(),getString(R.string.completed_order));
+        }
 
-        adapter.addPager(new ClientOrderPendingFragment(),getString(R.string.pending_order));
-        adapter.addPager(new ClientOrderCurrentFragment(),getString(R.string.current_order));
-        adapter.addPager(new ClientOrderCompletedFragment(),getString(R.string.completed_order));
+
         binding.clientOrderContainerFragmentItemVp.setAdapter(adapter);
     }
+
 
     @Override
     public void onBack() {

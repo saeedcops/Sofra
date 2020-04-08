@@ -86,6 +86,8 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
                         try {
                             if (response.body().getStatus()==1) {
                                 Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                myOfferData.remove(position);
+                                notifyDataSetChanged();
                             }else {
                                 Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                             }

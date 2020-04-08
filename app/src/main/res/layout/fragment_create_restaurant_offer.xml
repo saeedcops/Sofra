@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,90 +11,165 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@color/colorWhite"
+            android:id="@+id/create_restaurant_offer_parent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 style="@style/myTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_margin="@dimen/_5sdp"
                 android:gravity="center"
-                android:text="@string/offer_image"
+                android:text="@string/add_offer"
                 android:textSize="@dimen/_20ssp" />
-
-            <ImageView
-                android:id="@+id/create_restaurant_offer_iv"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_90sdp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_image" />
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_35sdp"
 
-            <EditText
-                android:id="@+id/create_restaurant_offer_et_name"
-                style="@style/myTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/rectangle_shape_ib"
-                android:hint="@string/offer_name"
-                android:padding="@dimen/_5sdp" />
-            <EditText
-                android:id="@+id/create_restaurant_offer_et_price"
-                style="@style/myTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:inputType="phone"
-                android:background="@drawable/rectangle_shape_ib"
-                android:hint="@string/price"
-                android:padding="@dimen/_5sdp" />
-            <EditText
-                android:id="@+id/create_restaurant_offer_et_offer_price"
-                style="@style/myTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/rectangle_shape_ib"
-                android:hint="@string/offer_price"
-                android:padding="@dimen/_5sdp" />
+                >
 
-            <EditText
-                android:id="@+id/create_restaurant_offer_et_description"
-                style="@style/myTextView"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/create_restaurant_offer_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_plus" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/rectangle_shape_ib"
-                android:hint="@string/offer_description"
-                android:lines="3"
-                android:padding="@dimen/_5sdp" />
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/offer_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_restaurant_offer_et_name"
+                        style="@style/myTextView"
+                        android:inputType="textPersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_restaurant_offer_et_price"
+                        style="@style/myTextView"
+                        android:inputType="phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/offer_price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_restaurant_offer_et_offer_price"
+                        style="@style/myTextView"
+                        android:inputType="phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/offer_description">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/create_restaurant_offer_et_description"
+                        style="@style/myTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_shape_ib"
+                        android:lines="3"
+                        android:padding="@dimen/_10sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_margin="@dimen/_5sdp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_restaurant_offer_til_from"
-                    android:layout_width="wrap_content"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/create_restaurant_offer_til_from"
+                        android:layout_width="wrap_content"
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/create_restaurant_offer_tv_date_from"
-                        android:layout_width="@dimen/_120sdp"
-                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
 
-                        android:background="@drawable/rectangle_shape"
-                        android:drawableEnd="@drawable/ic_date_range"
-                        android:padding="@dimen/_10sdp"
-                        android:hint="@string/from" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/create_restaurant_offer_tv_date_from"
+                            android:layout_width="@dimen/_120sdp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
+                            android:drawableEnd="@drawable/ic_date_range"
+                            android:background="@drawable/rectangle_shape"
+                            android:hint="@string/from" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/create_restaurant_offer_til_to"
@@ -117,7 +193,7 @@
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/rectangle_btn"
                 android:text="@string/add"
                 android:textAllCaps="false"

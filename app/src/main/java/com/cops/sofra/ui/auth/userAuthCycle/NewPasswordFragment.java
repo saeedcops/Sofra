@@ -21,6 +21,7 @@ import com.cops.sofra.viewModel.ClientNewPasswordViewModel;
 import com.cops.sofra.viewModel.RestaurantNewPasswordViewModel;
 
 import static com.cops.sofra.utils.CheckInput.isPasswordMatched;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class NewPasswordFragment extends BaseFragment {
 
@@ -40,8 +41,9 @@ public class NewPasswordFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          binding= DataBindingUtil.inflate(inflater,R.layout.fragment_new_password,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
+        binding.newPasswordFragmentEtCode.requestFocus();
 
         if (getArguments()!=null) {
             userType=getArguments().getString("userType");
@@ -65,6 +67,13 @@ public class NewPasswordFragment extends BaseFragment {
                         }
                     }
                 }
+            }
+        });
+
+        binding.newPasswordFragmentRlParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
             }
         });
 

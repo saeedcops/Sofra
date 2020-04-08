@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">سفرة</string>
+    <string name="About">عن التطبيق</string>
+    <string name="order_food" translatable="true">طلب طعام</string>
+    <string name="sell_food" translatable="false">بيع طعام</string>
+    <string name="food_list" translatable="false">قائمة الطعام</string>
+    <string name="rate_comment" translatable="false">التعليقات والتقيم</string>
+    <string name="restaurant_details" translatable="false">معلومات المتجر</string>
+    <string name="minimum_charger" translatable="false">الحد الادني للطلب </string>
+    <string name="delivery_cost" translatable="false">تكلفة التوصيل </string>
+    <string name="share_comment" translatable="false">يسعدنا مشاركتك بتعليق او تقيم</string>
+    <string name="add_comment_rate" translatable="false">اضف تعليق او تقييم</string>
+    <string name="status" translatable="false">الحاله :</string>
+    <string name="city" translatable="false">المدينة :</string>
+    <string name="region" translatable="false">المنطقة :</string>
+    <string name="choose_city" translatable="false">اختر المدينة</string>
+    <string name="Specail_order" translatable="false">طلب خاص</string>
+    <string name="enter_order" translatable="false">ادخل طلبك هنا</string>
+    <string name="count" translatable="false">العدد</string>
+    <string name="total_cost" translatable="false">اجمالي التكلفة</string>
+    <string name="order_now" translatable="false">اطلب الان</string>
+    <string name="add_more" translatable="false">اضف المذيد</string>
+    <string name="login" translatable="false">دخول</string>
+    <string name="user_name" translatable="false">اسم المستخدم</string>
+    <string name="password" translatable="false">كلمه المرور</string>
+    <string name="forget_password" translatable="false">هل نسيت كلمه المرور؟</string>
+    <string name="dont_have_account" translatable="false">ليس لديك حساب؟ اضغط هنا</string>
+    <string name="restaurant_name" translatable="false">اسم المطعم</string>
+    <string name="continue_register" translatable="false">متابعه</string>
+    <string name="email" translatable="false">البريد الالكتروني</string>
+    <string name="delivery_time" translatable="false">وقت التوصيل</string>
+    <string name="password_confirm" translatable="false">تأكيد كلمة المرور</string>
+    <string name="communication_data" translatable="false">بيانات التواصل</string>
+    <string name="phone" translatable="false">الجوال</string>
+    <string name="whatsapp" translatable="false">الواتس اب</string>
+    <string name="restaurant_Photo" translatable="false">شعار المطعم</string>
+    <string name="register" translatable="false">تسجيل</string>
+    <string name="select_image" translatable="false">رجاءا اختر الصورة</string>
+    <string name="choose_regoin" translatable="false">اختر المنطقة</string>
+    <string name="canceled" translatable="false">تم الالغاء</string>
+    <string name="name" translatable="false">الاسم</string>
+    <string name="select_your_location" translatable="false">رجاءا اختر موقعك</string>
+    <string name="select_profile_image" translatable="false">اختر صورة البروفايل</string>
+    <string name="select_restaurant_image" translatable="false">اختر شعار المطعم</string>
+    <string name="enter_your_email" translatable="false">رجاءا ادخل البريد الالكتروني</string>
+    <string name="send" translatable="false">ارسال</string>
+    <string name="enter_your_code" translatable="false">رجاءا ادخل الكود</string>
+    <string name="code" translatable="false">الكود</string>
+    <string name="enter_your_password" translatable="false">رجاءا ادخل كلمة المرور الجديده</string>
+    <string name="my_items" translatable="false">تصنيفاتي</string>
+    <string name="pick_restaurant_logo" translatable="false">اختر صورة المطعم</string>
+    <string name="item_image" translatable="false">صورة التصنيف</string>
+    <string name="item_name" translatable="false">اسم التصنيف</string>
+    <string name="add" translatable="false">اضافة</string>
+    <string name="update_item" translatable="false">تعديل التصنيف</string>
+    <string name="update" translatable="false">تعديل</string>
+    <string name="price" translatable="false">السعر</string>
+    <string name="product_name" translatable="false">اسم المنتج</string>
+    <string name="product_description" translatable="false">وصف المنتج</string>
+    <string name="price_offer" translatable="false">السعر في العرض</string>
+    <string name="preparing_time" translatable="false">وقت التحضير</string>
+    <string name="edit" translatable="false">تعديل</string>
+    <string name="required_field" translatable="false">هذا الحقل ضروري</string>
+    <string name="correct_phone" translatable="false">رجاءا ادخل رقم جوال صحيح</string>
+    <string name="password_not_matched" translatable="false">كلمة المرور غير متتابقه</string>
+    <string name="email_not_valid" translatable="false">رجاؤا ادخل بريد الكتروني صحيح</string>
+    <string name="pending_order" translatable="false">طلبات جديدة</string>
+    <string name="current_order" translatable="false">طلبات حاليه</string>
+    <string name="completed_order" translatable="false">طلبات سابقه</string>
+    <string name="call" translatable="false">اتصال</string>
+    <string name="accept" translatable="false">قبول</string>
+    <string name="cancel" translatable="false">الغاء</string>
+    <string name="order_number" translatable="false">رقم الطلب :</string>
+    <string name="address" translatable="false">العنوان</string>
+    <string name="order_done" translatable="false">الطلب مكتمل</string>
+    <string name="order_refused" translatable="false">الطلب ملغي</string>
+    <string name="refuse_reason" translatable="false">سبب الالغاء</string>
+    <string name="refuse_reason_please" translatable="false">رجاءا ادخل سبب الالغاء</string>
+    <string name="refuse" translatable="false">الغاء</string>
+    <string name="order_details" translatable="false">تفاصيل الطلب</string>
+    <string name="close" translatable="false">اغلاق</string>
+    <string name="note" translatable="false">ملاحظات</string>
+    <string name="commission" translatable="false">العمولة</string>
+    <string name="my_offer" translatable="false">عروضي</string>
+    <string name="more" translatable="false">المزيد</string>
+    <string name="Contact_us" translatable="false">تواصل معنا</string>
+    <string name="rete_comment" translatable="false">التعليقات والتقيم</string>
+    <string name="change_password" translatable="false">تغير كلمة المرور</string>
+    <string name="logout" translatable="false">تسجيل الخروج</string>
+    <string name="new_offer" translatable="false">جديد العروض</string>
+    <string name="offer_name" translatable="false">اسم العرض</string>
+    <string name="offer_description" translatable="false">وصف العرض</string>
+    <string name="from" translatable="false">من</string>
+    <string name="to" translatable="false">الي</string>
+    <string name="offer_image" translatable="false">صورة العرض</string>
+    <string name="offer_price" translatable="false">سعر العرض</string>
+    <string name="old_password" translatable="false">كلمة المرور القديمة</string>
+    <string name="lorem" translatable="false">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. </string>
+    <string name="rajhi_bank" translatable="false">بنك الراجحي : 123412587</string>
+    <string name="ahly_bank" translatable="false">البنك الاهلي : 748562144</string>
+    <string name="total" translatable="false">المجموع الكلي</string>
+    <string name="payments" translatable="false">الدفع</string>
+    <string name="net_commission" translatable="false">صافي العمولة</string>
+    <string name="since" translatable="false">منذ</string>
+    <string name="day" translatable="false">ايام</string>
+    <string name="hours" translatable="false">ساعات</string>
+    <string name="minute" translatable="false">دقائق</string>
+    <string name="restaurant_info" translatable="false">معلومات المتجر</string>
+    <string name="choose_review" translatable="false">اختر تقيمك</string>
+    <string name="select_rate_image" translatable="false">رجاءا اختر صورة التقيم</string>
+    <string name="go_login" translatable="false">قم بتسجيل الدخول لاضافة تعليق</string>
+    <string name="add_note" translatable="false">اضافة ملاحظه</string>
+    <string name="order_location" translatable="false">عنوان الطلب</string>
+    <string name="cash" translatable="false">نقدا</string>
+    <string name="online" translatable="false">الدفع اونلاين</string>
+    <string name="add_to_order" translatable="false">اضف بعض الطعام للطلب</string>
+    <string name="confirmation" translatable="false">تأكيد</string>
+    <string name="offer" translatable="false">العروض</string>
+    <string name="details" translatable="false">التفاصيل</string>
+    <string name="message" translatable="false">الرسالة</string>
+    <string name="complaint" translatable="false">شكوى</string>
+    <string name="suggestion" translatable="false">اقتراح</string>
+    <string name="inquiry" translatable="false">استعلام</string>
+    <string name="who_we" translatable="false">من نحن</string>
+    <string name="sure_to_exit" translatable="false">هل انت متأكد من الخروج؟</string>
+    <string name="please_login" translatable="false">رجاءا قم بتسجيل الدخول</string>
+    <string name="open">مفتوح</string>
+    <string name="add_offer">اضف عرض</string>
+    <string name="qty">عدد</string>
+    <string name="exit">اضغط مرة اخري للخروج </string>
+</resources>

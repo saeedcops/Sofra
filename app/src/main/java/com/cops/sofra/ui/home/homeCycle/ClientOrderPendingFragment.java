@@ -39,6 +39,7 @@ public class ClientOrderPendingFragment extends BaseFragment {
     private OnEndLess onEndLess;
     private String apiToken;
     private int lastPage;
+    private String pending = "pending";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,25 +49,29 @@ public class ClientOrderPendingFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding= DataBindingUtil.inflate(inflater,R.layout.fragment_client_order_pending,container,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_client_order_pending, container, false);
         View view = binding.getRoot();
         setUpActivity();
-      //  apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
-        if (LoadData(getActivity(),"apiToken")!=null) {
 
-            apiToken=LoadData(getActivity(),"apiToken");
+        clientGetOrderViewModel = ViewModelProviders.of(getActivity()).get(ClientGetOrderViewModel.class);
+        layoutManager = new LinearLayoutManager(getActivity());
+        binding.clientOrderPendingFragmentRv.setLayoutManager(layoutManager);
+        orderAdapter = new ClientPendingOrderAdapter(getActivity(), myOrderData);
+
+        //  apiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
+        if (LoadData(getActivity(), "apiToken") != null) {
+
+            apiToken = LoadData(getActivity(), "apiToken");
 
         }
         getPendingOrder();
 
-       return view;
+
+        return view;
     }
 
-    private void getPendingOrder(){
-        clientGetOrderViewModel= ViewModelProviders.of(getActivity()).get(ClientGetOrderViewModel.class);
-        layoutManager= new LinearLayoutManager(getActivity());
-        binding.clientOrderPendingFragmentRv.setLayoutManager(layoutManager);
-        orderAdapter=new ClientPendingOrderAdapter(getActivity(),myOrderData);
+    private void getPendingOrder() {
+
 
         onEndLess = new OnEndLess(layoutManager, 1) {
             @Override
@@ -78,7 +83,7 @@ public class ClientOrderPendingFragment extends BaseFragment {
 
                         onEndLess.previous_page = current_page;
 
-                        clientGetOrderViewModel.getOrderList(apiToken,"pending",current_page);
+                        clientGetOrderViewModel.getOrderList(apiToken, pending, current_page);
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
                     }
@@ -90,38 +95,49 @@ public class ClientOrderPendingFragment extends BaseFragment {
             }
         };
         binding.clientOrderPendingFragmentRv.addOnScrollListener(onEndLess);
-        if (myOrderData.size()==0) {
 
-            clientGetOrderViewModel.getOrderList(apiToken,"pending",1);
+
+        if (myOrderData.size() == 0) {
+
+            clientGetOrderViewModel.getOrderList(apiToken, pending, 1);
         }
         binding.clientOrderPendingFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (myOrderData.size() == 0) {
 
-                    clientGetOrderViewModel.getOrderList(apiToken,"pending",1);
-                }else{
+                    clientGetOrderViewModel.getOrderList(apiToken, pending, onEndLess.current_page);
+                } else {
                     binding.clientOrderPendingFragmentSwipe.setRefreshing(false);
                 }
 
             }
         });
-
         binding.clientOrderPendingFragmentRv.setAdapter(orderAdapter);
+
         clientGetOrderViewModel.clientGetOrderMutableLiveData.observe(this, new Observer<ClientOrder>() {
             @Override
             public void onChanged(ClientOrder clientOrder) {
-                if (clientOrder.getStatus()==1) {
-                    lastPage= clientOrder.getData().getLastPage();
-                    Log.i("data",clientOrder.getMsg());
-                    myOrderData.clear();
-                    myOrderData.addAll(clientOrder.getData().getData());
+                if (clientOrder.getStatus() == 1) {
+                    binding.clientOrderPendingFragmentSwipe.setRefreshing(false);
+                    lastPage = clientOrder.getData().getLastPage();
+//                    if(myOrderData.size()>0)
+//                    myOrderData.clear();
+                    Log.i("data", clientOrder.getMsg());
+                    for (int i = 0; i < clientOrder.getData().getData().size(); i++) {
+
+                        if (clientOrder.getData().getData().get(i).getState().equals(pending)) {
+                            myOrderData.add(clientOrder.getData().getData().get(i));
+                        }
+
+                    }
                     orderAdapter.notifyDataSetChanged();
                 }
             }
         });
 
     }
+
 
     @Override
     public void onBack() {

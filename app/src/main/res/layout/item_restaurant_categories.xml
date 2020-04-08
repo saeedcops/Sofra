@@ -11,9 +11,7 @@
         android:id="@+id/restaurant_categories_adapter_swipe_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:elevation="@dimen/_4sdp"
         app:dragEdge="left"
         app:mode="same_level">
@@ -21,7 +19,6 @@
         <LinearLayout
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_90sdp"
-
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -42,18 +39,15 @@
                 android:src="@drawable/ic_edit" />
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/restaurant_categories_adapter_cv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/_5sdp"
-            app:cardCornerRadius="@dimen/_10sdp">
-
             <LinearLayout
+                android:id="@+id/restaurant_categories_adapter_cv"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:gravity="center"
-                android:layout_height="match_parent">
+                android:elevation="@dimen/_10sdp"
+                android:background="@drawable/rectangle"
+                android:padding="@dimen/_10sdp"
+                android:layout_height="@dimen/_90sdp">
 
                 <ImageView
                     android:id="@+id/restaurant_categories_adapter_iv_item"
@@ -62,19 +56,21 @@
                     android:layout_margin="@dimen/_10sdp"
                     android:background="@drawable/rectangle"
                     android:gravity="center"
+                    android:scaleType="fitXY"
                     android:src="@drawable/salad" />
 
                 <TextView
                     android:id="@+id/restaurant_categories_adapter_tv_name"
                     style="@style/myTextView"
                     android:layout_width="match_parent"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/restaurant_categories_adapter_iv_item"
                     android:text="@string/email" />
 
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+
     </com.chauthai.swipereveallayout.SwipeRevealLayout>
+
 </layout>

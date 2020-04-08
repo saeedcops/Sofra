@@ -24,7 +24,9 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:layout_weight="1"
-                android:background="@drawable/rectangle_text_4">
+                android:padding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:background="@drawable/rectangle_shape_solid">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_40sdp"
@@ -35,6 +37,7 @@
                 <Spinner
                     android:id="@+id/restaurant_list_fragment_sp_city"
                     android:layout_width="match_parent"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_height="match_parent" />
 
             </RelativeLayout>
@@ -44,13 +47,16 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:layout_weight="1"
-                android:background="@drawable/rectangle_text_4">
+               
+                android:elevation="@dimen/_10sdp"
+                android:background="@drawable/rectangle_shape_solid">
 
 
                 <SearchView
                     android:id="@+id/restaurant_list_fragment_search"
                     android:layout_width="match_parent"
                     android:searchIcon="@drawable/ic_search_black_24dp"
+
                     android:layout_height="match_parent" />
             </RelativeLayout>
 

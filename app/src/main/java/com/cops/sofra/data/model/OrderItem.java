@@ -10,22 +10,30 @@ public class OrderItem {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    private String name,price,imageUrl,note;
+    private String name,price,imageUrl,note,restaurantId;
     private int count,itemId;
+
 
 
     public OrderItem() {
     }
     @Ignore
-    public OrderItem(String name, String imageUrl, String price, int count, int itemId) {
+    public OrderItem(String name, String imageUrl, String price, int count, int itemId,String restaurantId) {
 
         this.name = name;
         this.price = price;
         this.count=count;
         this.imageUrl=imageUrl;
         this.itemId=itemId;
+        this.restaurantId=restaurantId;
+    }
+    public String getRestaurantId() {
+        return restaurantId;
     }
 
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
+    }
 
     public String getNote() {
         return note;

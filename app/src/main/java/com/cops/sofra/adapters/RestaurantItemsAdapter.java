@@ -84,6 +84,7 @@ public class RestaurantItemsAdapter extends RecyclerView.Adapter<RestaurantItems
                 bundle.putString("name",restaurantItemsData.get(position).getName());
                 bundle.putString("description",restaurantItemsData.get(position).getDescription());
                 bundle.putInt("itemId",restaurantItemsData.get(position).getId());
+                bundle.putString("restaurantId",restaurantItemsData.get(position).getRestaurantId());
 
                 if (restaurantItemsData.get(position).getHasOffer()) {
                     bundle.putString("price", restaurantItemsData.get(position).getOfferPrice());

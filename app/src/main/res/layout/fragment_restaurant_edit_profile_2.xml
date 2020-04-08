@@ -10,33 +10,49 @@
     <LinearLayout
         android:id="@+id/restaurant_edit_profile_2_fragment_ll_parent"
         android:orientation="vertical"
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:hint="@string/delivery_cost">
 
-        <EditText
-            android:id="@+id/restaurant_edit_profile_2_fragment_et_delivery_cost"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_2_fragment_et_delivery_cost"                style="@style/myTextView"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_money_white"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_money_white"
-            android:inputType="phone"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/delivery_cost"/>
-        <EditText
-            android:id="@+id/restaurant_edit_profile_2_fragment_et_delivery_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
-            android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_time_white"
-            android:inputType="phone"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/delivery_time"/>
+            android:hint="@string/delivery_time">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_2_fragment_et_delivery_time"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_time_white"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <LinearLayout
             android:layout_margin="@dimen/_10sdp"
             android:layout_width="match_parent"
@@ -62,30 +78,46 @@
             style="@style/myTextView"
             android:text="@string/communication_data"/>
 
-        <EditText
-            android:id="@+id/restaurant_edit_profile_2_fragment_et_phone"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_phone_white"
-            android:inputType="phone"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/phone"/>
-        <EditText
-            android:id="@+id/restaurant_edit_profile_2_fragment_et_whatsapp"
+            android:hint="@string/phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_2_fragment_et_phone"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_phone_white"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_whatsapp_logo_variant"
-            android:inputType="phone"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/whatsapp"/>
+            android:hint="@string/whatsapp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_2_fragment_et_whatsapp"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_whatsapp_logo_variant"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/restaurant_edit_profile_fragment_btn"
             android:layout_width="wrap_content"

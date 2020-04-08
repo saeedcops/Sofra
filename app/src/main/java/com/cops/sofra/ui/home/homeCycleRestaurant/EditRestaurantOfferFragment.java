@@ -36,6 +36,7 @@ import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger
 import static com.cops.sofra.utils.CheckInput.isEditTextSet;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 import static com.cops.sofra.utils.HelperMethod.showCalender;
 
 public class EditRestaurantOfferFragment extends BaseFragment {
@@ -66,7 +67,7 @@ public class EditRestaurantOfferFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_edit_restaurant_offer,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
        // mApiToken="Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx";
         if (LoadData(getActivity(),"apiToken")!=null) {
@@ -106,6 +107,12 @@ public class EditRestaurantOfferFragment extends BaseFragment {
 
                     }
                 }
+            }
+        });
+        binding.editRestaurantOfferParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
             }
         });
 

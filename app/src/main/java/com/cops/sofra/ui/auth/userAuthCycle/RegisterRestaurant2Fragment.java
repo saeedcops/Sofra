@@ -35,6 +35,7 @@ import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger
 import static com.cops.sofra.utils.CheckInput.isPhoneSet;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class RegisterRestaurant2Fragment extends BaseFragment {
 
@@ -98,6 +99,12 @@ public class RegisterRestaurant2Fragment extends BaseFragment {
             });
 
 
+            binding.registerRestaurant2FragmentRlParent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    disappearKeypad(getActivity(),view);
+                }
+            });
 
        return view;
     }

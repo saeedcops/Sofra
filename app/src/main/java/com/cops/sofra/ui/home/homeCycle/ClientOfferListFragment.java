@@ -121,7 +121,7 @@ public class ClientOfferListFragment extends BaseFragment {
                 if (myOffer.getStatus()==1) {
                     binding.clientOfferListFragmentSwipe.setRefreshing(false);
                     lastPage= myOffer.getData().getLastPage();
-                    myOfferData.clear();
+                   // myOfferData.clear();
                     myOfferData.addAll(myOffer.getData().getData());
                     offerAdapter.notifyDataSetChanged();
                 }

@@ -65,7 +65,10 @@ public class ClientOfferAdapter extends RecyclerView.Adapter<ClientOfferAdapter.
             public void onClick(View v) {
 
                 ((HomeActivity) activity).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.home_activity_fl_frame,new ViewOfferDetailsFragment(myOfferData.get(position).getId())).addToBackStack(null).commit();
+                        .replace(R.id.home_activity_fl_frame,new ViewOfferDetailsFragment(
+                                myOfferData.get(position).getRestaurantId(),myOfferData.get(position).getPhotoUrl()
+                                ,myOfferData.get(position).getPrice(),myOfferData.get(position).getName(),
+                                myOfferData.get(position).getId())).addToBackStack(null).commit();
 
             }
         });

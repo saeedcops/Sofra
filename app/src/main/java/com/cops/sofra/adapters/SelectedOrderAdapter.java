@@ -2,12 +2,14 @@ package com.cops.sofra.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,11 +37,16 @@ public class SelectedOrderAdapter extends RecyclerView.Adapter<SelectedOrderAdap
     private Context context;
     private Activity activity;
     private List<OrderItem> selectedOrders = new ArrayList<>();
+    private ArrayList<OrderItem> selected = new ArrayList<>();
+    private ItemViewModel itemViewModel;
+    private int counter=0;
 
     public SelectedOrderAdapter(Activity activity, List<OrderItem> selectedOrders) {
         this.context = activity;
         this.activity=activity;
         this.selectedOrders = selectedOrders;
+        itemViewModel= ViewModelProviders.of((BaseActivity)activity).get(ItemViewModel.class);
+
     }
 
 
@@ -64,8 +71,9 @@ public class SelectedOrderAdapter extends RecyclerView.Adapter<SelectedOrderAdap
 
         Glide.with(context).load(selectedOrders.get(position).getImageUrl()).into(holder.binding.selectedOrderAdapterIv);
         holder.binding.selectedOrderAdapterTvName.setText(selectedOrders.get(position).getName());
-        holder.binding.selectedOrderAdapterPrice.setText(selectedOrders.get(position).getPrice());
+        holder.binding.selectedOrderAdapterPrice.setText(selectedOrders.get(position).getPrice()+" $");
         holder.binding.selectedOrderAdapterTvCount.setText(selectedOrders.get(position).getCount()+"");
+        counter=selectedOrders.get(position).getCount();
 
 
     }
@@ -77,7 +85,6 @@ public class SelectedOrderAdapter extends RecyclerView.Adapter<SelectedOrderAdap
             @Override
             public void onClick(View v) {
 
-                ItemViewModel itemViewModel= ViewModelProviders.of((BaseActivity)activity).get(ItemViewModel.class);
                 itemViewModel.onDelete(selectedOrders.get(position));
 
                 CartFragment.total-=Double.parseDouble(selectedOrders.get(position).getPrice());
@@ -86,6 +93,38 @@ public class SelectedOrderAdapter extends RecyclerView.Adapter<SelectedOrderAdap
 
             }
         });
+        holder.binding.selectedOrderAdapterCivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               int counter=selectedOrders.get(position).getCount();
+               counter++;
+                holder.binding.selectedOrderAdapterTvCount.setText(counter+"");
+                selectedOrders.get(position).setCount(counter);
+
+                itemViewModel.onUpdate(selectedOrders.get(position));
+                selectedOrders.clear();
+               // notifyDataSetChanged();
+
+
+            }
+        });
+        holder.binding.selectedOrderAdapterCivRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int counter=selectedOrders.get(position).getCount();
+                if(counter==1)
+                    return;
+                counter--;
+
+                holder.binding.selectedOrderAdapterTvCount.setText(counter+"");
+                selectedOrders.get(position).setCount(counter);
+                itemViewModel.onUpdate(selectedOrders.get(position));
+                selectedOrders.clear();
+               // notifyDataSetChanged();
+
+            }
+        });
+
 
     }
 

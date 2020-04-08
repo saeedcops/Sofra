@@ -42,6 +42,7 @@ public class ForgetPasswordFragment extends BaseFragment {
          binding= DataBindingUtil.inflate(inflater,R.layout.fragment_forget_password,container,false);
         View view = binding.getRoot();
         setUpActivity();
+        binding.forgetPasswordFragmentEtEmail.requestFocus();
 
         if (getArguments()!=null) {
             userType=getArguments().getString("userType");
@@ -82,7 +83,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                     bundle.putString("userType",userType);
                     newPasswordFragment.setArguments(bundle);
 
-                    getChildFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
+                    getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
                             .addToBackStack(null).commit();
 
                 }else {
@@ -109,7 +110,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                     bundle.putString("userType",userType);
                     newPasswordFragment.setArguments(bundle);
 
-                    getChildFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
+                    getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, newPasswordFragment)
                             .addToBackStack(null).commit();
 
                 }else {

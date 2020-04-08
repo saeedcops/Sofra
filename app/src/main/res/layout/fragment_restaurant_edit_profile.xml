@@ -10,8 +10,9 @@
     <LinearLayout
         android:id="@+id/restaurant_edit_profile_fragment_ll_parent"
         android:orientation="vertical"
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/restaurant_edit_profile_fragment_iv"
@@ -19,30 +20,52 @@
             android:layout_height="@dimen/_70sdp"
             android:src="@drawable/kfc"
             android:layout_gravity="center"/>
-        <EditText
-            android:id="@+id/restaurant_edit_profile_fragment_name"
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/person"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_5sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/name"/>
-        <EditText
-            android:id="@+id/restaurant_edit_profile_fragment_email"
+            android:hint="@string/name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_fragment_name"
+                style="@style/myTextView"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/person"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_email_white"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/email"/>
+            android:hint="@string/email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_fragment_email"
+                style="@style/myTextView"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_email_white"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
+            android:elevation="@dimen/_4sdp"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp">
@@ -65,6 +88,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
+            android:elevation="@dimen/_4sdp"
             android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp">
 
@@ -83,23 +107,34 @@
                 android:drawablePadding="@dimen/_10sdp"
                 android:padding="@dimen/_10sdp"/>
         </RelativeLayout>
-        <EditText
-            android:id="@+id/restaurant_edit_profile_fragment_et_minimum_charger"
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_text_4"
             android:layout_margin="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_money_white"
-            android:inputType="phone"
-            android:drawableTint="@color/colorText"
-            android:drawablePadding="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:hint="@string/minimum_charger"/>
+            android:hint="@string/minimum_charger">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/restaurant_edit_profile_fragment_et_minimum_charger"
+                style="@style/myTextView"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_money_white"
+                android:drawableTint="@color/colorText"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/rectangle_text_4"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/restaurant_edit_profile_fragment_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_btn"
+            android:elevation="@dimen/_4sdp"
             android:layout_gravity="center"
             android:text="@string/continue_register"
             android:textAllCaps="false"

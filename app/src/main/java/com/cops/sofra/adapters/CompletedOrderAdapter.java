@@ -89,20 +89,11 @@ public class CompletedOrderAdapter extends RecyclerView.Adapter<CompletedOrderAd
 //                OrderViewDialog viewDialog =new OrderViewDialog(myOrderData.get(position).getId());
 //                viewDialog.show(((BaseActivity) activity).getSupportFragmentManager(), "dialog");
 
-                String orderId= myOrderData.get(position).getItems().get(0).getPivot().getOrderId();
-                String restaurant=myOrderData.get(position).getRestaurant().getName();
-                String date=myOrderData.get(position).getRestaurant().getUpdatedAt();
-                String address=myOrderData.get(position).getAddress();
-                String payMethod=myOrderData.get(position).getPaymentMethodId();
-                String imageUrl=myOrderData.get(position).getRestaurant().getPhotoUrl();
-                String cost=myOrderData.get(position).getCost();
-                String delivery=myOrderData.get(position).getDeliveryCost();
-                String total=myOrderData.get(position).getTotal();
-                String phone=myOrderData.get(position).getRestaurant().getPhone();
+                int orderId= myOrderData.get(position).getId();
+
 
                 ((HomeActivity) activity).getSupportFragmentManager().beginTransaction().addToBackStack(null)
-                        .replace(R.id.home_activity_fl_frame,new ViewOrderFragment(
-                                restaurant,date,address,payMethod,orderId,imageUrl,total,cost,delivery,phone)).commit();
+                        .replace(R.id.home_activity_fl_frame,new ViewOrderFragment(orderId)).commit();
 
 
             }

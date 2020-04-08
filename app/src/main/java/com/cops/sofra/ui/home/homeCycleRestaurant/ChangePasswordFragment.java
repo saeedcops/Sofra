@@ -25,6 +25,7 @@ import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger
 import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger.SaveData;
 import static com.cops.sofra.utils.CheckInput.isEditTextSet;
 import static com.cops.sofra.utils.CheckInput.isPasswordMatched;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class ChangePasswordFragment extends BaseFragment {
 
@@ -45,7 +46,7 @@ public class ChangePasswordFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_change_password, container, false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
 
         if (LoadData(getActivity(), "apiToken") != null) {
@@ -72,6 +73,12 @@ public class ChangePasswordFragment extends BaseFragment {
 
 
                 }
+            }
+        });
+        binding.changePasswordFragmentParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
             }
         });
 

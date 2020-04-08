@@ -46,7 +46,7 @@ public class RestaurantListViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<Restaurants> call, Throwable t) {
-                Log.i("error",t.getMessage());
+               // Log.i("error",t.getMessage());
             }
         });
        // return restaurants;

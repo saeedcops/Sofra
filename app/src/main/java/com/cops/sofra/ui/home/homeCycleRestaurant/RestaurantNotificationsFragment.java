@@ -114,9 +114,11 @@ public class RestaurantNotificationsFragment extends BaseFragment {
             public void onRefresh() {
                 if (notificationsData.size() == 0) {
 
-                    notificationsViewModel.getNotifications(apiToken,onEndLess.current_page);
+                    notificationsViewModel.getNotifications(apiToken,1);
+                }else{
+                    binding.restaurantNotificationsFragmentSwipe.setRefreshing(false);
                 }
-                binding.restaurantNotificationsFragmentSwipe.setRefreshing(false);
+
             }
         });
 
@@ -126,8 +128,9 @@ public class RestaurantNotificationsFragment extends BaseFragment {
             @Override
             public void onChanged(Notifications notifications) {
                 if (notifications.getStatus()==1) {
+                    binding.restaurantNotificationsFragmentSwipe.setRefreshing(false);
                     lastPage= notifications.getData().getLastPage();
-                    notificationsData.clear();
+                    //notificationsData.clear();
                     notificationsData.addAll(notifications.getData().getData());
                     notificationsAdapter.notifyDataSetChanged();
                 }
@@ -187,7 +190,7 @@ public class RestaurantNotificationsFragment extends BaseFragment {
             public void onChanged(Notifications notifications) {
                 if (notifications.getStatus()==1) {
                     lastPage= notifications.getData().getLastPage();
-                    notificationsData.clear();
+                   // notificationsData.clear();
                     notificationsData.addAll(notifications.getData().getData());
                     notificationsAdapter.notifyDataSetChanged();
                 }

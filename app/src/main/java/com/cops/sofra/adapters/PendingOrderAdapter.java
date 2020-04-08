@@ -67,12 +67,19 @@ public class PendingOrderAdapter extends RecyclerView.Adapter<PendingOrderAdapte
 
     private void setData(PendingOrderAdapter.ViewHolder holder, int position) {
 
-        Glide.with(context).load(myOrderData.get(position).getClient().getPhotoUrl()).into(holder.binding.orderPendingAdapterIv);
+    //    if (myOrderData.get(position).getState().equals("pending")) {
+            Glide.with(context).load(myOrderData.get(position).getClient().getPhotoUrl()).into(holder.binding.orderPendingAdapterIv);
 
-       holder.binding.orderPendingAdapterName.setText(myOrderData.get(position).getClient().getName());
-       holder.binding.orderPendingAdapterNumber.setText(activity.getString(R.string.order_number)+myOrderData.get(position).getItems().get(0).getPivot().getOrderId());
-        holder.binding.orderPendingAdapterTotal.setText(activity.getString(R.string.total_cost)+" : "+myOrderData.get(position).getTotal() + " $");
-        holder.binding.orderPendingAdapterAddress.setText(activity.getString(R.string.address)+" : "+myOrderData.get(position).getAddress());
+            holder.binding.orderPendingAdapterName.setText(myOrderData.get(position).getClient().getName());
+            holder.binding.orderPendingAdapterNumber.setText(activity.getString(R.string.order_number)+myOrderData.get(position).getItems().get(0).getPivot().getOrderId());
+            holder.binding.orderPendingAdapterTotal.setText(activity.getString(R.string.total_cost)+" : "+myOrderData.get(position).getTotal() + " $");
+            holder.binding.orderPendingAdapterAddress.setText(activity.getString(R.string.address)+" : "+myOrderData.get(position).getAddress());
+
+//        }else if(!myOrderData.get(position).getState().equals("pending")){
+//
+//
+//    }
+
 
 
     }
@@ -89,20 +96,11 @@ public class PendingOrderAdapter extends RecyclerView.Adapter<PendingOrderAdapte
 //                viewDialog.show(((BaseActivity) activity).getSupportFragmentManager(), "dialog");
 //
 
-                String orderId= myOrderData.get(position).getItems().get(0).getPivot().getOrderId();
-                String restaurant=myOrderData.get(position).getRestaurant().getName();
-                String date=myOrderData.get(position).getRestaurant().getUpdatedAt();
-                String address=myOrderData.get(position).getAddress();
-                String payMethod=myOrderData.get(position).getPaymentMethodId();
-                String imageUrl=myOrderData.get(position).getRestaurant().getPhotoUrl();
-                String cost=myOrderData.get(position).getCost();
-                String delivery=myOrderData.get(position).getDeliveryCost();
-                String total=myOrderData.get(position).getTotal();
-                String phone=myOrderData.get(position).getRestaurant().getPhone();
+                int orderId= myOrderData.get(position).getId();;
+
 
                 ((HomeActivity) activity).getSupportFragmentManager().beginTransaction().addToBackStack(null)
-                        .replace(R.id.home_activity_fl_frame,new ViewOrderFragment(
-                                restaurant,date,address,payMethod,orderId,imageUrl,total,cost,delivery,phone)).commit();
+                        .replace(R.id.home_activity_fl_frame,new ViewOrderFragment(orderId)).commit();
             }
         });
 
@@ -130,6 +128,8 @@ public class PendingOrderAdapter extends RecyclerView.Adapter<PendingOrderAdapte
 
                             if (response.body().getStatus()==1) {
                                 Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                myOrderData.remove(position);
+                                notifyDataSetChanged();
                             }else {
                                 Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                             }

@@ -8,9 +8,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:background="@color/colorWhite"
+        android:id="@+id/contact_us_fragment_parent"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv"
@@ -22,51 +24,87 @@
             android:text="@string/Contact_us"
             android:textSize="@dimen/_20sdp" />
 
-        <EditText
-            android:id="@+id/contact_us_fragment_et_name"
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:hint="@string/name"
-            android:padding="@dimen/_10sdp"
-            android:background="@drawable/rectangle_text_4"
-            />
-        <EditText
-            android:id="@+id/contact_us_fragment_et_email"
+            android:layout_margin="@dimen/_10sdp"
+            android:hint="@string/name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contact_us_fragment_et_name"
+                style="@style/myTextView"
+                android:maxLines="1"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_text_5"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:hint="@string/email"
-            android:padding="@dimen/_10sdp"
-            android:background="@drawable/rectangle_text_4"
-             />
-        <EditText
-            android:id="@+id/contact_us_fragment_et_phone"
+            android:layout_margin="@dimen/_10sdp"
+            android:hint="@string/email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contact_us_fragment_et_email"
+                style="@style/myTextView"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_text_5"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:hint="@string/phone"
-            android:inputType="phone"
-            android:padding="@dimen/_10sdp"
-            android:background="@drawable/rectangle_text_4"
-             />
-        <EditText
-            android:id="@+id/contact_us_fragment_et_message"
+            android:layout_margin="@dimen/_10sdp"
+            android:hint="@string/phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contact_us_fragment_et_phone"
+                style="@style/myTextView"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_text_5"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/myTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:hint="@string/message"
-            android:maxLines="3"
-            android:lines="3"
-            android:padding="@dimen/_10sdp"
-            android:background="@drawable/rectangle_text_4"
-             />
+            android:layout_margin="@dimen/_10sdp"
+            android:hint="@string/message">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contact_us_fragment_et_message"
+                style="@style/myTextView"
+                android:maxLines="3"
+                android:lines="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_text_5"
+                android:padding="@dimen/_10sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
             <RadioGroup
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:padding="@dimen/_10sdp"
                 android:id="@+id/contact_us_fragment_radio_group"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

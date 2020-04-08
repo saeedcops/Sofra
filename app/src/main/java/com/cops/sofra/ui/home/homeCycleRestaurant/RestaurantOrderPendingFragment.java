@@ -39,6 +39,7 @@ public class RestaurantOrderPendingFragment extends BaseFragment {
     private OnEndLess onEndLess;
     private String apiToken;
     private int lastPage;
+    private final String pending="pending";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class RestaurantOrderPendingFragment extends BaseFragment {
 
                         onEndLess.previous_page = current_page;
 
-                        restaurantGetOrderViewModel.getOrderList(apiToken,"pending",current_page);
+                        restaurantGetOrderViewModel.getOrderList(apiToken,pending,current_page);
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
                     }
@@ -90,30 +91,40 @@ public class RestaurantOrderPendingFragment extends BaseFragment {
             }
         };
         binding.restaurantOrderPendingFragmentRv.addOnScrollListener(onEndLess);
+        binding.restaurantOrderPendingFragmentRv.setAdapter(orderAdapter);
         if (myOrderData.size()==0) {
 
-            restaurantGetOrderViewModel.getOrderList(apiToken,"pending",1);
+            restaurantGetOrderViewModel.getOrderList(apiToken,pending,1);
         }
         binding.restaurantOrderPendingFragmentSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (myOrderData.size() == 0) {
 
-                    restaurantGetOrderViewModel.getOrderList(apiToken,"pending",1);
+                    restaurantGetOrderViewModel.getOrderList(apiToken,pending,1);
+                }else {
+                    binding.restaurantOrderPendingFragmentSwipe.setRefreshing(false);
                 }
-                binding.restaurantOrderPendingFragmentSwipe.setRefreshing(false);
+
             }
         });
 
-        binding.restaurantOrderPendingFragmentRv.setAdapter(orderAdapter);
+
         restaurantGetOrderViewModel.restaurantsGetOrderMutableLiveData.observe(this, new Observer<MyOrder>() {
             @Override
             public void onChanged(MyOrder myOrder) {
                 if (myOrder.getStatus()==1) {
+                    binding.restaurantOrderPendingFragmentSwipe.setRefreshing(false);
                    lastPage= myOrder.getData().getLastPage();
                     Log.i("data",myOrder.getMsg());
-                    myOrderData.clear();
-                    myOrderData.addAll(myOrder.getData().getData());
+
+                    for (int i = 0; i < myOrder.getData().getData().size(); i++) {
+                        if (myOrder.getData().getData().get(i).getState().equals(pending)) {
+                            myOrderData.add(myOrder.getData().getData().get(i));
+                        }
+
+                    }
+
                     orderAdapter.notifyDataSetChanged();
                 }
             }

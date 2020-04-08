@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,9 +9,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:background="@color/colorWhite"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/add_review_dialog_tv"
@@ -22,15 +24,30 @@
             android:gravity="center"
             android:layout_margin="@dimen/_10sdp"/>
 
-        <EditText
-            android:id="@+id/complete_order_fragment_et_note"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/rectangle_text_6"
-            style="@style/myTextView"
-            android:hint="@string/add_note"
-            android:padding="@dimen/_10sdp"/>
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_20sdp"
+            app:cardCornerRadius="@dimen/_10sdp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_note">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/complete_order_fragment_et_note"
+                    style="@style/myTextView"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_shape_ib"
+                    android:padding="@dimen/_10sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,24 +70,28 @@
             style="@style/myTextView"
             android:textColor="@color/albumColorPrimaryBlack"
             android:layout_margin="@dimen/_5sdp"/>
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/complete_order_fragment_radio_group"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <CheckBox
+            android:layout_height="wrap_content" >
+
+            <RadioButton
                 android:id="@+id/complete_order_fragment_cb_cash"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/cash"/>
-            <CheckBox
+            <RadioButton
                 android:id="@+id/complete_order_fragment_cb_online"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/online"/>
-        </LinearLayout>
+
+        </RadioGroup>
+
         <TextView
             android:id="@+id/complete_order_fragment_tv_count"
 

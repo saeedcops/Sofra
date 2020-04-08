@@ -1,127 +1,131 @@
 <resources>
-    <string name="app_name">Sofra</string>
-    <string name="order_food">Order Food</string>
-    <string name="sell_food">Sell Food</string>
-    <string name="food_list">Food List</string>
-    <string name="rate_comment"><![CDATA[Rate & Comment]]></string>
-    <string name="restaurant_details">Restaurant details</string>
-    <string name="minimum_charger">Minimum charger </string>
-    <string name="delivery_cost">Delivery cost </string>
-    <string name="share_comment">We \'r glade of your comment and rate</string>
-    <string name="add_comment_rate">Add comment or rate</string>
-    <string name="status">Status :</string>
-    <string name="city">City :</string>
-    <string name="region">Region :</string>
-    <string name="choose_city">Choose city</string>
-    <string name="Specail_order">Specail order</string>
-    <string name="enter_order">Enter your order here</string>
-    <string name="count">Count</string>
-    <string name="total_cost">Total Cost</string>
-    <string name="order_now">Order now</string>
-    <string name="add_more">Add more</string>
-    <string name="login">Log in</string>
-    <string name="user_name">User name</string>
-    <string name="password">Password</string>
-    <string name="forget_password">Did you forget your password ?</string>
-    <string name="dont_have_account">If you don\'t have account ? press here</string>
-    <string name="restaurant_name">Restaurant Name</string>
-    <string name="continue_register">Continue</string>
-    <string name="email">Email Address</string>
-    <string name="delivery_time">Delivery Time</string>
-    <string name="password_confirm">Password Confirmation</string>
-    <string name="communication_data">Communication Data</string>
-    <string name="phone">Phone</string>
-    <string name="whatsapp">Whats app</string>
-    <string name="restaurant_Photo">Restaurant Photo</string>
-    <string name="register">Register</string>
-    <string name="select_image">Please Select Image</string>
-    <string name="choose_regoin">Choose Region</string>
-    <string name="canceled">Canceled</string>
-    <string name="name">Name</string>
-    <string name="select_your_location">Please Select your Location</string>
-    <string name="select_profile_image">Select Profile Image</string>
-    <string name="select_restaurant_image">Select Restaurant Logo</string>
-    <string name="enter_your_email">Please Enter your Email</string>
-    <string name="send">Send</string>
-    <string name="enter_your_code">Please Enter the Code</string>
-    <string name="code">Code</string>
-    <string name="enter_your_password">Please Enter your new Password</string>
-    <string name="my_items">My Items</string>
-    <string name="pick_restaurant_logo">Please Pick Restaurant Logo</string>
-    <string name="item_image">Item Picture</string>
-    <string name="item_name">Item Name</string>
-    <string name="add">Add</string>
-    <string name="update_item">Update Item</string>
-    <string name="update">Update</string>
-    <string name="price">Price</string>
-    <string name="product_name">Product Name</string>
-    <string name="product_description">Product Description</string>
-    <string name="price_offer">Price in Offer</string>
-    <string name="preparing_time">Preparing Time</string>
-    <string name="edit">Edit</string>
-    <string name="required_field">This Field is Required</string>
-    <string name="correct_phone">Please Enter a Correct Phone Number</string>
-    <string name="password_not_matched">Password not Matched</string>
-    <string name="email_not_valid">Please Enter a Valid Email Address</string>
-    <string name="pending_order">Pending Order</string>
-    <string name="current_order">Current Order</string>
-    <string name="completed_order">Completed Order</string>
-    <string name="call">Call</string>
-    <string name="accept">Accept</string>
-    <string name="cancel">Cancel</string>
-    <string name="order_number">Order Number :</string>
-    <string name="address">Address</string>
-    <string name="order_done">Order Done</string>
-    <string name="order_refused">Order Refused</string>
-    <string name="refuse_reason">Refuse Reason</string>
-    <string name="refuse_reason_please">Please Enter Refuse Reason</string>
-    <string name="refuse">Refuse</string>
-    <string name="order_details">Order Details</string>
-    <string name="close">Close</string>
-    <string name="note">Note</string>
-    <string name="commission">Commission</string>
-    <string name="my_offer">My Offers</string>
-    <string name="more">More</string>
-    <string name="Contact_us">Contact Us</string>
+    <string name="app_name" translatable="false">Sofra</string>
+    <string name="order_food" translatable="true">Order Food</string>
+    <string name="sell_food" translatable="false">Sell Food</string>
+    <string name="food_list" translatable="false">Food List</string>
+    <string name="rate_comment" translatable="false"><![CDATA[Rate & Comment]]></string>
+    <string name="restaurant_details" translatable="false">Restaurant details</string>
+    <string name="minimum_charger" translatable="false">Minimum charger </string>
+    <string name="delivery_cost" translatable="false">Delivery cost </string>
+    <string name="share_comment" translatable="false">We \'r glade of your comment and rate</string>
+    <string name="add_comment_rate" translatable="false">Add comment or rate</string>
+    <string name="status" translatable="false">Status :</string>
+    <string name="city" translatable="false">City :</string>
+    <string name="region" translatable="false">Region :</string>
+    <string name="choose_city" translatable="false">Choose city</string>
+    <string name="Specail_order" translatable="false">Specail order</string>
+    <string name="enter_order" translatable="false">Enter your order here</string>
+    <string name="count" translatable="false">Count</string>
+    <string name="total_cost" translatable="false">Total Cost</string>
+    <string name="order_now" translatable="false">Order now</string>
+    <string name="add_more" translatable="false">Add more</string>
+    <string name="login" translatable="false">Log in</string>
+    <string name="user_name" translatable="false">User name</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="forget_password" translatable="false">Did you forget your password ?</string>
+    <string name="dont_have_account" translatable="false">If you don\'t have account ? press here</string>
+    <string name="restaurant_name" translatable="false">Restaurant Name</string>
+    <string name="continue_register" translatable="false">Continue</string>
+    <string name="email" translatable="false">Email Address</string>
+    <string name="delivery_time" translatable="false">Delivery Time</string>
+    <string name="password_confirm" translatable="false">Password Confirmation</string>
+    <string name="communication_data" translatable="false">Communication Data</string>
+    <string name="phone" translatable="false">Phone</string>
+    <string name="whatsapp" translatable="false">Whats app</string>
+    <string name="restaurant_Photo" translatable="false">Restaurant Photo</string>
+    <string name="register" translatable="false">Register</string>
+    <string name="select_image" translatable="false">Please Select Image</string>
+    <string name="choose_regoin" translatable="false">Choose Region</string>
+    <string name="canceled" translatable="false">Canceled</string>
+    <string name="name" translatable="false">Name</string>
+    <string name="select_your_location" translatable="false">Please Select your Location</string>
+    <string name="select_profile_image" translatable="false">Select Profile Image</string>
+    <string name="select_restaurant_image" translatable="false">Select Restaurant Logo</string>
+    <string name="enter_your_email" translatable="false">Please Enter your Email</string>
+    <string name="send" translatable="false">Send</string>
+    <string name="enter_your_code" translatable="false">Please Enter the Code</string>
+    <string name="code" translatable="false">Code</string>
+    <string name="enter_your_password" translatable="false">Please Enter your new Password</string>
+    <string name="my_items" translatable="false">My Items</string>
+    <string name="pick_restaurant_logo" translatable="false">Please Pick Restaurant Logo</string>
+    <string name="item_image" translatable="false">Item Picture</string>
+    <string name="item_name" translatable="false">Item Name</string>
+    <string name="add" translatable="false">Add</string>
+    <string name="update_item" translatable="false">Update Item</string>
+    <string name="update" translatable="false">Update</string>
+    <string name="price" translatable="false">Price</string>
+    <string name="product_name" translatable="false">Product Name</string>
+    <string name="product_description" translatable="false">Product Description</string>
+    <string name="price_offer" translatable="false">Price in Offer</string>
+    <string name="preparing_time" translatable="false">Preparing Time</string>
+    <string name="edit" translatable="false">Edit</string>
+    <string name="required_field" translatable="false">This Field is Required</string>
+    <string name="correct_phone" translatable="false">Please Enter a Correct Phone Number</string>
+    <string name="password_not_matched" translatable="false">Password not Matched</string>
+    <string name="email_not_valid" translatable="false">Please Enter a Valid Email Address</string>
+    <string name="pending_order" translatable="false">Pending Order</string>
+    <string name="current_order" translatable="false">Current Order</string>
+    <string name="completed_order" translatable="false">Completed Order</string>
+    <string name="call" translatable="false">Call</string>
+    <string name="accept" translatable="false">Accept</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="order_number" translatable="false">Order Number :</string>
+    <string name="address" translatable="false">Address</string>
+    <string name="order_done" translatable="false">Order Done</string>
+    <string name="order_refused" translatable="false">Order Refused</string>
+    <string name="refuse_reason" translatable="false">Refuse Reason</string>
+    <string name="refuse_reason_please" translatable="false">Please Enter Refuse Reason</string>
+    <string name="refuse" translatable="false">Refuse</string>
+    <string name="order_details" translatable="false">Order Details</string>
+    <string name="close" translatable="false">Close</string>
+    <string name="note" translatable="false">Note</string>
+    <string name="commission" translatable="false">Commission</string>
+    <string name="my_offer" translatable="false">My Offers</string>
+    <string name="more" translatable="false">More</string>
+    <string name="Contact_us" translatable="false">Contact Us</string>
+    <string name="rete_comment" translatable="false">Rate and Comments</string>
+    <string name="change_password" translatable="false">Change Password</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="new_offer" translatable="false">New Offers</string>
+    <string name="offer_name" translatable="false">Offer Name</string>
+    <string name="offer_description" translatable="false">Offer Description</string>
+    <string name="from" translatable="false">From</string>
+    <string name="to" translatable="false">To</string>
+    <string name="offer_image" translatable="false">Offer Image</string>
+    <string name="offer_price" translatable="false">Offer Price</string>
+    <string name="old_password" translatable="false">Old Password</string>
+    <string name="lorem" translatable="false">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. </string>
+    <string name="rajhi_bank" translatable="false">Rajhi bank: 1234578954</string>
+    <string name="ahly_bank" translatable="false">Ahly Bank :143940875</string>
+    <string name="total" translatable="false">Total</string>
+    <string name="payments" translatable="false">Payments</string>
+    <string name="net_commission" translatable="false">Net Commission</string>
+    <string name="since" translatable="false">Since</string>
+    <string name="day" translatable="false">Days</string>
+    <string name="hours" translatable="false">Hours</string>
+    <string name="minute" translatable="false">Minute</string>
+    <string name="restaurant_info" translatable="false">Restaurant Info</string>
+    <string name="choose_review" translatable="false">Choose Review</string>
+    <string name="select_rate_image" translatable="false">Please Select Image to Rate</string>
+    <string name="go_login" translatable="false">You have to Login to add a Comment</string>
+    <string name="add_note" translatable="false">Add Note</string>
+    <string name="order_location" translatable="false">Order Location</string>
+    <string name="cash" translatable="false">Cash</string>
+    <string name="online" translatable="false">Online</string>
+    <string name="add_to_order" translatable="false">Add Some Food to Order</string>
+    <string name="confirmation" translatable="false">Confirmation</string>
+    <string name="offer" translatable="false">Offers</string>
+    <string name="details" translatable="false">Details</string>
+    <string name="message" translatable="false">Message</string>
+    <string name="complaint" translatable="false">complaint</string>
+    <string name="suggestion" translatable="false">Suggestion</string>
+    <string name="inquiry" translatable="false">inquiry</string>
+    <string name="who_we" translatable="false">Who We Are\n</string>
+    <string name="sure_to_exit" translatable="false">Are you sure you want to Logout ?</string>
+    <string name="please_login" translatable="false">Please Login</string>
     <string name="About">About</string>
-    <string name="rete_comment">Rate and Comments</string>
-    <string name="change_password">Change Password</string>
-    <string name="logout">Logout</string>
-    <string name="new_offer">New Offers</string>
-    <string name="offer_name">Offer Name</string>
-    <string name="offer_description">Offer Description</string>
-    <string name="from">From</string>
-    <string name="to">To</string>
-    <string name="offer_image">Offer Image</string>
-    <string name="offer_price">Offer Price</string>
-    <string name="old_password">Old Password</string>
-    <string name="lorem">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. </string>
-    <string name="rajhi_bank">Rajhi bank: 1234578954</string>
-    <string name="ahly_bank">Ahly Bank :143940875</string>
-    <string name="total">Total</string>
-    <string name="payments">Payments</string>
-    <string name="net_commission">Net Commission</string>
-    <string name="since">Since</string>
-    <string name="day">Days</string>
-    <string name="hours">Hours</string>
-    <string name="minute">Minute</string>
-    <string name="restaurant_info">Restaurant Info</string>
-    <string name="choose_review">Choose Review</string>
-    <string name="select_rate_image">Please Select Image to Rate</string>
-    <string name="go_login">You have to Login to add a Comment</string>
-    <string name="add_note">Add Note</string>
-    <string name="order_location">Order Location</string>
-    <string name="cash">Cash</string>
-    <string name="online">Online</string>
-    <string name="add_to_order">Add Some Food to Order</string>
-    <string name="confirmation">Confirmation</string>
-    <string name="offer">Offers</string>
-    <string name="details">Details</string>
-    <string name="message">Message</string>
-    <string name="complaint">complaint</string>
-    <string name="suggestion">Suggestion</string>
-    <string name="inquiry">inquiry</string>
-    <string name="who_we">Who We Are</string>
-    <string name="sure_to_exit">Are you sure you want to Logout ?</string>
-    <string name="please_login">Please Login</string>
+    <string name="open">Open</string>
+    <string name="add_offer">Add Offer</string>
+    <string name="qty">qty</string>
+    <string name="exit">Press back again to exit</string>
 </resources>

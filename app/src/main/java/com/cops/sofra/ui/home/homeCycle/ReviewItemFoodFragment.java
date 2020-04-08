@@ -30,7 +30,7 @@ public class ReviewItemFoodFragment extends BaseFragment {
     private FragmentReviewItemFoodBinding binding;
     private int count=1;
     private int itemId;
-    private String name,price,imageUrl;
+    private String name,price,imageUrl,restaurantId;
     private OrderItem orderItem;
     private ItemViewModel itemViewModel;
 
@@ -53,6 +53,7 @@ public class ReviewItemFoodFragment extends BaseFragment {
             price=getArguments().getString("price");
             imageUrl=getArguments().getString("imageUrl");
             itemId=getArguments().getInt("itemId");
+            restaurantId=getArguments().getString("restaurantId");
             Glide.with(getActivity()).load(imageUrl).into(binding.reviewItemFoodFragmentIv);
             binding.reviewItemFoodFragmentTvName.setText(name);
             binding.reviewItemFoodFragmentTvKind.setText(getArguments().getString("description"));
@@ -75,7 +76,7 @@ public class ReviewItemFoodFragment extends BaseFragment {
 
                 }else{
 
-                    orderItem =new OrderItem(name,imageUrl,price,count,itemId);
+                    orderItem =new OrderItem(name,imageUrl,price,count,itemId,restaurantId);
 
                     if (!binding.reviewItemFoodFragmentEtSpecialOrder.getText().toString().equals("")) {
 

@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_toEndOf="@+id/selected_order_adapter_tv_name"
+            android:layout_below="@+id/selected_order_adapter_tv_name"
+            android:layout_toEndOf="@+id/selected_order_adapter_iv"
             android:text="kentaky"
             android:layout_marginStart="@dimen/_10sdp"
             android:gravity="center"
@@ -45,7 +46,7 @@
 
         <LinearLayout
             android:layout_toEndOf="@+id/selected_order_adapter_iv"
-            android:layout_below="@+id/selected_order_adapter_tv_name"
+            android:layout_below="@+id/selected_order_adapter_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

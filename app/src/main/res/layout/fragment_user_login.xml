@@ -7,80 +7,93 @@
 
     <RelativeLayout
         android:id="@+id/user_login_fragment_rl_parent"
-        android:background="@drawable/auth_bg_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:background="@drawable/auth_bg"
+        android:layout_height="match_parent"
+        android:background="@drawable/auth_bg_1">
 
+        <LinearLayout
             android:layout_width="match_parent"
+
             android:layout_height="match_parent"
+            android:background="@drawable/auth_bg"
             android:orientation="vertical">
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/login"
                 style="@style/myAuthTextView"
-                android:textSize="@dimen/_35ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
-                android:gravity="center"/>
-            <EditText
-                android:layout_margin="@dimen/_15sdp"
-                android:id="@+id/user_login_fragment_et_user_name"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textSize="@dimen/_35ssp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/myAuthTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/user_name"
-                android:drawableStart="@drawable/ic_email_white"
-                android:drawablePadding="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_40sdp"
-                style="@style/myAuthTextView"/>
-            <EditText
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:id="@+id/user_login_fragment_et_password"
+                android:hint="@string/user_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_login_fragment_et_user_name"
+                    style="@style/myAuthTextView"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_email_white"
+                    android:drawablePadding="@dimen/_5sdp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/myAuthTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:drawableStart="@drawable/ic_password_white"
-                android:drawablePadding="@dimen/_5sdp"
-                style="@style/myAuthTextView"/>
+                android:hint="@string/password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_login_fragment_et_password"
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_password_white"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/user_login_fragment_tv_forget_password"
+                style="@style/myAuthTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/forget_password"
-                style="@style/myAuthTextView"
-                android:gravity="end"/>
+                android:gravity="end"
+                android:text="@string/forget_password" />
+
             <Button
                 android:id="@+id/user_login_fragment_btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_btn"
-                android:layout_margin="@dimen/_20sdp"
                 android:layout_gravity="center"
-                android:textAllCaps="false"
-                android:textSize="@dimen/_20ssp"
-                android:textColor="@color/colorWhite"
+                android:layout_margin="@dimen/_20sdp"
+                android:background="@drawable/rectangle_btn"
                 android:padding="@dimen/_10sdp"
                 android:text="@string/login"
-                android:drawableTint="@color/colorWhite"
-                android:drawableEnd="@drawable/logout"
-                android:drawablePadding="-40dp"/>
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20ssp" />
 
         </LinearLayout>
 
 
         <TextView
             android:id="@+id/user_login_fragment_tv_create_account"
+            style="@style/myAuthTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dont_have_account"
             android:layout_alignParentBottom="true"
-            android:textSize="@dimen/_16sdp"
             android:background="@color/colorTextAccent"
-            style="@style/myAuthTextView"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="@string/dont_have_account"
+            android:textSize="@dimen/_16sdp" />
     </RelativeLayout>
 </layout>

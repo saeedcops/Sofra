@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:padding="@dimen/_5sdp"
+
                 android:orientation="horizontal">
 
                 <ImageView
@@ -36,7 +36,7 @@
 
                 <TextView
                     android:id="@+id/restaurant_notification_adapter_tv_notify"
-                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:layout_width="0dp"
                     android:layout_weight="6"
                     android:layout_height="wrap_content"
@@ -45,15 +45,15 @@
 
                 <ImageView
                     android:id="@+id/restaurant_notification_adapter_iv_time"
-                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_access_time_black_24dp" />
 
                 <TextView
                     android:id="@+id/restaurant_notification_adapter_tv_time"
-                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:layout_width="0dp"
                     android:layout_weight="3"
                     android:layout_height="wrap_content"

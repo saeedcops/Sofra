@@ -11,6 +11,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/client_offer_adapter_rl_parent"
         android:orientation="vertical"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

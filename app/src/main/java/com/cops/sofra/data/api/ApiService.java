@@ -1,6 +1,8 @@
 package com.cops.sofra.data.api;
 
 
+import androidx.lifecycle.LiveData;
+
 import com.cops.sofra.data.model.acceptOrder.AcceptOrder;
 import com.cops.sofra.data.model.addReview.AddReview;
 import com.cops.sofra.data.model.category.Category;
@@ -8,6 +10,7 @@ import com.cops.sofra.data.model.city.City;
 import com.cops.sofra.data.model.clientOrder.ClientOrder;
 import com.cops.sofra.data.model.clientProfile.ClientProfile;
 import com.cops.sofra.data.model.commission.Commission;
+import com.cops.sofra.data.model.contactUs.ContactUs;
 import com.cops.sofra.data.model.myOffer.MyOffer;
 import com.cops.sofra.data.model.myOrder.Item;
 import com.cops.sofra.data.model.myOrder.MyOrder;
@@ -45,13 +48,13 @@ import retrofit2.http.Query;
 public interface ApiService {
 
 
-    @POST("restaurant/change-password")
+    @POST("contact")
     @FormUrlEncoded
-    Call<OfferDetails> contactUs(@Field("name")String name,
-                                 @Field("email")String email,
-                                 @Field("phone")String phone,
-                                 @Field("type")String type,
-                                 @Field("content")String content);
+    Call<ContactUs> contactUs(@Field("name")String name,
+                              @Field("email")String email,
+                              @Field("phone")String phone,
+                              @Field("type")String type,
+                              @Field("content")String content);
 
     @POST("client/confirm-order")
     @FormUrlEncoded
@@ -261,8 +264,8 @@ public interface ApiService {
 
     @GET("restaurant/my-orders")
     Call<MyOrder> getMyOrderList(@Query("api_token")String apiToken,
-                                 @Query("state")String state,
-                                 @Query("page")int page);
+                                          @Query("state")String state,
+                                          @Query("page")int page);
 
     @GET("offer")
     Call<OfferDetails> getOfferDetails(@Query("offer_id")int offerId);
@@ -277,6 +280,9 @@ public interface ApiService {
     @GET("restaurant/show-order")
     Call<ViewOrder> viewOrder(@Query("api_token")String apiToken,
                               @Query("order_id")int orderId);
+    @GET("client/show-order")
+    Call<ViewOrder> clientViewOrder(@Query("api_token")String apiToken,
+                                    @Query("order_id")int orderId);
 
     @POST("restaurant/accept-order")
     @FormUrlEncoded

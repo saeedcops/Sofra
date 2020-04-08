@@ -38,6 +38,7 @@ import static com.cops.sofra.data.local.sharedPreference.SharedPreferencesManger
 import static com.cops.sofra.utils.CheckInput.isEditTextSet;
 import static com.cops.sofra.utils.CheckInput.isEmailValid;
 import static com.cops.sofra.utils.GeneralResponse.getCityAndRegion;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class RestaurantEditProfileFragment extends BaseFragment {
 
@@ -61,7 +62,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_restaurant_edit_profile,container,false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
 
 
@@ -122,6 +123,13 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
             getProfile();
         }
+        binding.restaurantEditProfileFragmentLlParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
+
+            }
+        });
 
 
        return view;

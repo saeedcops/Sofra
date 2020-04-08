@@ -6,7 +6,7 @@
     </data>
 
     <RelativeLayout
-        android:id="@+id/register_restaurant_2_fragment_rl_parent"
+
         android:background="@drawable/auth_bg_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,13 +16,12 @@
             android:background="@drawable/auth_bg"/>
 
         <LinearLayout
-
+            android:id="@+id/register_restaurant_2_fragment_rl_parent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/register_restaurant_2_fragment_btn_register"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
+
             android:orientation="vertical">
 
             <TextView
@@ -32,27 +31,39 @@
                 android:text="@string/communication_data"
                 android:textSize="@dimen/_20ssp" />
 
-            <EditText
-                android:id="@+id/register_restaurant_2_fragment_et_phone"
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/myAuthTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_phone_white"
-                android:hint="@string/phone"
-                android:inputType="phone" />
+                android:hint="@string/phone">
 
-            <EditText
-                android:id="@+id/register_restaurant_2_fragment_et_whats"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_restaurant_2_fragment_et_phone"
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_phone_white"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/myAuthTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_whatsapp_logo_variant"
-                android:hint="@string/whatsapp"
-                android:inputType="phone" />
+                android:hint="@string/whatsapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_restaurant_2_fragment_et_whats"
+                    style="@style/myAuthTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_whatsapp_logo_variant"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 style="@style/myAuthTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +72,8 @@
                 android:textSize="@dimen/_20ssp" />
 
             <ImageButton
-
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:id="@+id/register_restaurant_2_fragment_ib_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

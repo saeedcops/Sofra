@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.cops.sofra.data.model.OrderItem;
 
-@Database(entities = {OrderItem.class},version = 1,exportSchema = false)
+@Database(entities = {OrderItem.class},version = 2,exportSchema = false)
 public abstract class RoomManager extends RoomDatabase {
     private static RoomManager roomManager;
 
@@ -46,7 +46,7 @@ public abstract class RoomManager extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            roomDao.add(new OrderItem("name","image","21",2,1));
+            roomDao.add(new OrderItem("name","image","21",2,1,"1"));
             return null;
         }
     }

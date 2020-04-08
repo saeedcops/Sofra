@@ -40,7 +40,7 @@ public class ClientNewOrderViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<NewOrder> call, Throwable t) {
-                Log.i("fail",t.getMessage());
+//                Log.i("fail",t.getMessage());
             }
         });
 

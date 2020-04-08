@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,22 +13,33 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.cops.sofra.R;
+import com.cops.sofra.data.model.OrderItem;
 import com.cops.sofra.data.model.myOffer.MyOfferData;
 import com.cops.sofra.data.model.offerDetails.OfferDetails;
 import com.cops.sofra.databinding.FragmentRestaurantListBinding;
 import com.cops.sofra.databinding.FragmentViewOfferDetailsBinding;
 import com.cops.sofra.ui.BaseFragment;
 import com.cops.sofra.viewModel.client.ClientOfferDetailsViewModel;
+import com.cops.sofra.viewModel.room.ItemViewModel;
 
 public class ViewOfferDetailsFragment extends BaseFragment {
 
-    public ViewOfferDetailsFragment(int offerId) {
+    public ViewOfferDetailsFragment(String restaurantId,String imageUrl,String price,String name,int offerId)
+    {
         this.offerId = offerId;
+        this.name=name;
+        this.price=price;
+        this.imageUrl=imageUrl;
+        this.restaurantId=restaurantId;
     }
 
     private FragmentViewOfferDetailsBinding binding;
     private ClientOfferDetailsViewModel offerDetailsViewModel;
     private int offerId;
+    private String name,price,imageUrl,restaurantId;
+    private OrderItem orderItem;
+    private ItemViewModel itemViewModel;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +54,18 @@ public class ViewOfferDetailsFragment extends BaseFragment {
         setUpActivity();
 
         getOfferDetails();
+
+        binding.restaurantOfferListFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                orderItem =new OrderItem(name,imageUrl,price,1,offerId,restaurantId);
+                orderItem.setNote("No Notes");
+                itemViewModel = ViewModelProviders.of(getActivity()).get(ItemViewModel.class);
+                itemViewModel.add(orderItem);
+
+                Toast.makeText(baseActivity, getString(R.string.item_name)+" : "+name, Toast.LENGTH_LONG).show();
+            }
+        });
        return view;
     }
     private void getOfferDetails(){

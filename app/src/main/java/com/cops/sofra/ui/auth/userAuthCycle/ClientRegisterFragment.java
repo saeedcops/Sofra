@@ -1,6 +1,5 @@
 package com.cops.sofra.ui.auth.userAuthCycle;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import com.cops.sofra.data.model.restaurantLogin.RestaurantLogin;
 import com.cops.sofra.databinding.FragmentClientRegisterBinding;
 
 import com.cops.sofra.ui.BaseFragment;
-import com.cops.sofra.ui.home.HomeActivity;
 import com.cops.sofra.utils.CheckInput;
 import com.cops.sofra.utils.MediaLoader;
 import com.cops.sofra.viewModel.ClientSignUpViewModel;
@@ -44,6 +42,7 @@ import static com.cops.sofra.utils.CheckInput.isPhoneSet;
 import static com.cops.sofra.utils.GeneralResponse.getCityAndRegion;
 import static com.cops.sofra.utils.HelperMethod.convertFileToMultipart;
 import static com.cops.sofra.utils.HelperMethod.convertToRequestBody;
+import static com.cops.sofra.utils.HelperMethod.disappearKeypad;
 
 public class ClientRegisterFragment extends BaseFragment {
 
@@ -52,9 +51,8 @@ public class ClientRegisterFragment extends BaseFragment {
     private AlbumFile albumFile;
     private ArrayList<CityData> cityList = new ArrayList<>();
     private ArrayList<CityData> regionList = new ArrayList<>();
-    private int cityId;
-    private int regionId;
     private ClientSignUpViewModel clientSignUpViewModel;
+    public static boolean isRegistered =false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,7 +64,7 @@ public class ClientRegisterFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_client_register, container, false);
-        View view = binding.getRoot();
+        final View view = binding.getRoot();
         setUpActivity();
         getCityAndRegion(getActivity(),cityList,binding.registerClientFragmentSpCity,regionList,binding.registerClientFragmentSpRegion);
 
@@ -96,6 +94,13 @@ public class ClientRegisterFragment extends BaseFragment {
                     }
                 }
 
+            }
+        });
+
+        binding.registerClientFragmentRlParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disappearKeypad(getActivity(),view);
             }
         });
 
@@ -164,8 +169,14 @@ public class ClientRegisterFragment extends BaseFragment {
                     SaveData(getActivity(), "email", binding.registerClientFragmentEtEmail.getText().toString());
                     SaveData(getActivity(), "password", binding.registerClientFragmentEtPassword.getText().toString());
                     SaveData(getActivity(), "apiToken", restaurantLogin.getData().getApiToken());
-                    Intent intent = new Intent(getActivity(), HomeActivity.class);
-                    startActivity(intent);
+                    Bundle bundle =new Bundle();
+                    bundle.putString("userType","client");
+                    UserLoginFragment userLoginFragment=new UserLoginFragment();
+                    userLoginFragment.setArguments(bundle);
+                    isRegistered =true;
+                    getFragmentManager().beginTransaction().replace(R.id.auth_activity_fl_frame, userLoginFragment)
+                            .addToBackStack(null).commit();
+
 
                 } else {
                     Log.i("no", restaurantLogin.getMsg());

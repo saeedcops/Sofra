@@ -14,8 +14,9 @@
             android:id="@+id/splash_activity_iv_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-50dp"
-            android:layout_marginTop="-50dp"
+            android:layout_marginEnd="-70dp"
+            android:layout_marginTop="-70dp"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/salad" />
 
         <LinearLayout
@@ -61,9 +62,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="-115dp"
+            android:layout_marginStart="-115dp"
             android:layout_marginBottom="-140dp"
             android:src="@drawable/salad_2" />
 
